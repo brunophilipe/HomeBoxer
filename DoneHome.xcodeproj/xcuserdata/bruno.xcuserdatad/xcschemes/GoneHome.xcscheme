@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "153C91E617E8079C008E7A2A"
-               BuildableName = "GoneHome.app"
-               BlueprintName = "GoneHome"
-               ReferencedContainer = "container:GoneHome.xcodeproj">
+               BuildableName = "DoneHome.app"
+               BlueprintName = "DoneHome"
+               ReferencedContainer = "container:DoneHome.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "153C920A17E8079C008E7A2A"
-               BuildableName = "GoneHomeTests.xctest"
-               BlueprintName = "GoneHomeTests"
-               ReferencedContainer = "container:GoneHome.xcodeproj">
+               BuildableName = "DoneHomeTests.xctest"
+               BlueprintName = "DoneHomeTests"
+               ReferencedContainer = "container:DoneHome.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "153C91E617E8079C008E7A2A"
-            BuildableName = "GoneHome.app"
-            BlueprintName = "GoneHome"
-            ReferencedContainer = "container:GoneHome.xcodeproj">
+            BuildableName = "DoneHome.app"
+            BlueprintName = "DoneHome"
+            ReferencedContainer = "container:DoneHome.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "153C91E617E8079C008E7A2A"
-            BuildableName = "GoneHome.app"
-            BlueprintName = "GoneHome"
-            ReferencedContainer = "container:GoneHome.xcodeproj">
+            BuildableName = "DoneHome.app"
+            BlueprintName = "DoneHome"
+            ReferencedContainer = "container:DoneHome.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "153C91E617E8079C008E7A2A"
-            BuildableName = "GoneHome.app"
-            BlueprintName = "GoneHome"
-            ReferencedContainer = "container:GoneHome.xcodeproj">
+            BuildableName = "DoneHome.app"
+            BlueprintName = "DoneHome"
+            ReferencedContainer = "container:DoneHome.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

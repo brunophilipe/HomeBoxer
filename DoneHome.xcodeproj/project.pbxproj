@@ -18,7 +18,7 @@
 		153C920D17E8079C008E7A2A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C920C17E8079C008E7A2A /* XCTest.framework */; };
 		153C920E17E8079C008E7A2A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C91EA17E8079C008E7A2A /* Cocoa.framework */; };
 		153C921617E8079C008E7A2A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 153C921417E8079C008E7A2A /* InfoPlist.strings */; };
-		153C921817E8079C008E7A2A /* GoneHomeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 153C921717E8079C008E7A2A /* GoneHomeTests.m */; };
+		153C921817E8079C008E7A2A /* DoneHomeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 153C921717E8079C008E7A2A /* DoneHomeTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,26 +32,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		153C91E717E8079C008E7A2A /* GoneHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoneHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		153C91E717E8079C008E7A2A /* DoneHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoneHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		153C91EA17E8079C008E7A2A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		153C91ED17E8079C008E7A2A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		153C91EE17E8079C008E7A2A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		153C91EF17E8079C008E7A2A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		153C91F217E8079C008E7A2A /* GoneHome-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoneHome-Info.plist"; sourceTree = "<group>"; };
+		153C91F217E8079C008E7A2A /* DoneHome-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoneHome-Info.plist"; sourceTree = "<group>"; };
 		153C91F417E8079C008E7A2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		153C91F617E8079C008E7A2A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		153C91F817E8079C008E7A2A /* GoneHome-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoneHome-Prefix.pch"; sourceTree = "<group>"; };
+		153C91F817E8079C008E7A2A /* DoneHome-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DoneHome-Prefix.pch"; sourceTree = "<group>"; };
 		153C91FA17E8079C008E7A2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		153C91FC17E8079C008E7A2A /* BPDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPDocument.h; sourceTree = "<group>"; };
 		153C91FD17E8079C008E7A2A /* BPDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BPDocument.m; sourceTree = "<group>"; };
 		153C920017E8079C008E7A2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BPDocument.xib; sourceTree = "<group>"; };
 		153C920317E8079C008E7A2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		153C920517E8079C008E7A2A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		153C920B17E8079C008E7A2A /* GoneHomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoneHomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		153C920B17E8079C008E7A2A /* DoneHomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoneHomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		153C920C17E8079C008E7A2A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		153C921317E8079C008E7A2A /* GoneHomeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoneHomeTests-Info.plist"; sourceTree = "<group>"; };
+		153C921317E8079C008E7A2A /* DoneHomeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoneHomeTests-Info.plist"; sourceTree = "<group>"; };
 		153C921517E8079C008E7A2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		153C921717E8079C008E7A2A /* GoneHomeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoneHomeTests.m; sourceTree = "<group>"; };
+		153C921717E8079C008E7A2A /* DoneHomeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoneHomeTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +78,8 @@
 		153C91DE17E8079C008E7A2A = {
 			isa = PBXGroup;
 			children = (
-				153C91F017E8079C008E7A2A /* GoneHome */,
-				153C921117E8079C008E7A2A /* GoneHomeTests */,
+				153C91F017E8079C008E7A2A /* DoneHome */,
+				153C921117E8079C008E7A2A /* DoneHomeTests */,
 				153C91E917E8079C008E7A2A /* Frameworks */,
 				153C91E817E8079C008E7A2A /* Products */,
 			);
@@ -88,8 +88,8 @@
 		153C91E817E8079C008E7A2A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				153C91E717E8079C008E7A2A /* GoneHome.app */,
-				153C920B17E8079C008E7A2A /* GoneHomeTests.xctest */,
+				153C91E717E8079C008E7A2A /* DoneHome.app */,
+				153C920B17E8079C008E7A2A /* DoneHomeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,7 +114,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		153C91F017E8079C008E7A2A /* GoneHome */ = {
+		153C91F017E8079C008E7A2A /* DoneHome */ = {
 			isa = PBXGroup;
 			children = (
 				153C91FC17E8079C008E7A2A /* BPDocument.h */,
@@ -124,34 +124,36 @@
 				153C920517E8079C008E7A2A /* Images.xcassets */,
 				153C91F117E8079C008E7A2A /* Supporting Files */,
 			);
+			name = DoneHome;
 			path = GoneHome;
 			sourceTree = "<group>";
 		};
 		153C91F117E8079C008E7A2A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				153C91F217E8079C008E7A2A /* GoneHome-Info.plist */,
+				153C91F217E8079C008E7A2A /* DoneHome-Info.plist */,
 				153C91F317E8079C008E7A2A /* InfoPlist.strings */,
 				153C91F617E8079C008E7A2A /* main.m */,
-				153C91F817E8079C008E7A2A /* GoneHome-Prefix.pch */,
+				153C91F817E8079C008E7A2A /* DoneHome-Prefix.pch */,
 				153C91F917E8079C008E7A2A /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		153C921117E8079C008E7A2A /* GoneHomeTests */ = {
+		153C921117E8079C008E7A2A /* DoneHomeTests */ = {
 			isa = PBXGroup;
 			children = (
-				153C921717E8079C008E7A2A /* GoneHomeTests.m */,
+				153C921717E8079C008E7A2A /* DoneHomeTests.m */,
 				153C921217E8079C008E7A2A /* Supporting Files */,
 			);
+			name = DoneHomeTests;
 			path = GoneHomeTests;
 			sourceTree = "<group>";
 		};
 		153C921217E8079C008E7A2A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				153C921317E8079C008E7A2A /* GoneHomeTests-Info.plist */,
+				153C921317E8079C008E7A2A /* DoneHomeTests-Info.plist */,
 				153C921417E8079C008E7A2A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -160,9 +162,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		153C91E617E8079C008E7A2A /* GoneHome */ = {
+		153C91E617E8079C008E7A2A /* DoneHome */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 153C921B17E8079C008E7A2A /* Build configuration list for PBXNativeTarget "GoneHome" */;
+			buildConfigurationList = 153C921B17E8079C008E7A2A /* Build configuration list for PBXNativeTarget "DoneHome" */;
 			buildPhases = (
 				153C91E317E8079C008E7A2A /* Sources */,
 				153C91E417E8079C008E7A2A /* Frameworks */,
@@ -172,14 +174,14 @@
 			);
 			dependencies = (
 			);
-			name = GoneHome;
+			name = DoneHome;
 			productName = GoneHome;
-			productReference = 153C91E717E8079C008E7A2A /* GoneHome.app */;
+			productReference = 153C91E717E8079C008E7A2A /* DoneHome.app */;
 			productType = "com.apple.product-type.application";
 		};
-		153C920A17E8079C008E7A2A /* GoneHomeTests */ = {
+		153C920A17E8079C008E7A2A /* DoneHomeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 153C921E17E8079C008E7A2A /* Build configuration list for PBXNativeTarget "GoneHomeTests" */;
+			buildConfigurationList = 153C921E17E8079C008E7A2A /* Build configuration list for PBXNativeTarget "DoneHomeTests" */;
 			buildPhases = (
 				153C920717E8079C008E7A2A /* Sources */,
 				153C920817E8079C008E7A2A /* Frameworks */,
@@ -190,9 +192,9 @@
 			dependencies = (
 				153C921017E8079C008E7A2A /* PBXTargetDependency */,
 			);
-			name = GoneHomeTests;
+			name = DoneHomeTests;
 			productName = GoneHomeTests;
-			productReference = 153C920B17E8079C008E7A2A /* GoneHomeTests.xctest */;
+			productReference = 153C920B17E8079C008E7A2A /* DoneHomeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -205,12 +207,15 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Bruno Philipe";
 				TargetAttributes = {
+					153C91E617E8079C008E7A2A = {
+						DevelopmentTeam = R85D3K8ATT;
+					};
 					153C920A17E8079C008E7A2A = {
 						TestTargetID = 153C91E617E8079C008E7A2A;
 					};
 				};
 			};
-			buildConfigurationList = 153C91E217E8079C008E7A2A /* Build configuration list for PBXProject "GoneHome" */;
+			buildConfigurationList = 153C91E217E8079C008E7A2A /* Build configuration list for PBXProject "DoneHome" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -223,8 +228,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				153C91E617E8079C008E7A2A /* GoneHome */,
-				153C920A17E8079C008E7A2A /* GoneHomeTests */,
+				153C91E617E8079C008E7A2A /* DoneHome */,
+				153C920A17E8079C008E7A2A /* DoneHomeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -266,7 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				153C921817E8079C008E7A2A /* GoneHomeTests.m in Sources */,
+				153C921817E8079C008E7A2A /* DoneHomeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +280,7 @@
 /* Begin PBXTargetDependency section */
 		153C921017E8079C008E7A2A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 153C91E617E8079C008E7A2A /* GoneHome */;
+			target = 153C91E617E8079C008E7A2A /* DoneHome */;
 			targetProxy = 153C920F17E8079C008E7A2A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -398,9 +403,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GoneHome/GoneHome-Prefix.pch";
-				INFOPLIST_FILE = "GoneHome/GoneHome-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "GoneHome/DoneHome-Prefix.pch";
+				INFOPLIST_FILE = "GoneHome/DoneHome-Info.plist";
+				PRODUCT_NAME = DoneHome;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -411,9 +416,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GoneHome/GoneHome-Prefix.pch";
-				INFOPLIST_FILE = "GoneHome/GoneHome-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "GoneHome/DoneHome-Prefix.pch";
+				INFOPLIST_FILE = "GoneHome/DoneHome-Info.plist";
+				PRODUCT_NAME = DoneHome;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -433,8 +438,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "GoneHomeTests/GoneHomeTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "GoneHomeTests/DoneHomeTests-Info.plist";
+				PRODUCT_NAME = DoneHomeTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -451,8 +456,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoneHome/GoneHome-Prefix.pch";
-				INFOPLIST_FILE = "GoneHomeTests/GoneHomeTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "GoneHomeTests/DoneHomeTests-Info.plist";
+				PRODUCT_NAME = DoneHomeTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -461,7 +466,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		153C91E217E8079C008E7A2A /* Build configuration list for PBXProject "GoneHome" */ = {
+		153C91E217E8079C008E7A2A /* Build configuration list for PBXProject "DoneHome" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				153C921917E8079C008E7A2A /* Debug */,
@@ -470,21 +475,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		153C921B17E8079C008E7A2A /* Build configuration list for PBXNativeTarget "GoneHome" */ = {
+		153C921B17E8079C008E7A2A /* Build configuration list for PBXNativeTarget "DoneHome" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				153C921C17E8079C008E7A2A /* Debug */,
 				153C921D17E8079C008E7A2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		153C921E17E8079C008E7A2A /* Build configuration list for PBXNativeTarget "GoneHomeTests" */ = {
+		153C921E17E8079C008E7A2A /* Build configuration list for PBXNativeTarget "DoneHomeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				153C921F17E8079C008E7A2A /* Debug */,
 				153C922017E8079C008E7A2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

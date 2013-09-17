@@ -9,18 +9,26 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>ghp</string>
+				<string>dhp</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string></string>
-			<key>CFBundleTypeName</key>
-			<string>DocumentType</string>
-			<key>CFBundleTypeOSTypes</key>
+			<key>CFBundleTypeMIMETypes</key>
 			<array>
-				<string>????</string>
+				<string>application/donehomeproject</string>
 			</array>
+			<key>CFBundleTypeName</key>
+			<string>DoneHome Project</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array/>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.brunophilipe.dhp</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<integer>1</integer>
 			<key>NSDocumentClass</key>
 			<string>BPDocument</string>
 		</dict>
@@ -53,5 +61,31 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.apple.package</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>DoneHome Project</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.brunophilipe.dhp</string>
+			<key>UTTypeReferenceURL</key>
+			<string></string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>dhp</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/donehomeproject</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

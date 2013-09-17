@@ -15,6 +15,13 @@
     self = [super init];
     if (self) {
 		// Add your subclass-specific initialization here.
+		[self setProject_metadata:[NSMutableDictionary dictionary]];
+		[self setProject_pages:[NSMutableArray array]];
+		[self setProject_resources:[NSMutableArray array]];
+
+		[(NSMutableDictionary *)self.project_metadata setObject:@"John's Homepage" forKey:kBP_METADATA_PAGE_TITLE];
+		[(NSMutableDictionary *)self.project_metadata setObject:@"John Appleseed" forKey:kBP_METADATA_AUTHOR_NAME];
+		[(NSMutableDictionary *)self.project_metadata setObject:@"john.apple@example.com" forKey:kBP_METADATA_AUTHOR_EMAIL];
     }
     return self;
 }
@@ -30,6 +37,8 @@
 {
 	[super windowControllerDidLoadNib:aController];
 	// Add any code here that needs to be executed once the windowController has loaded the document's window.
+
+	[self updateContentFromMemory];
 }
 
 + (BOOL)autosavesInPlace
@@ -37,23 +46,84 @@
     return YES;
 }
 
-- (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
+- (NSFileWrapper *)fileWrapperOfType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
 {
-	// Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
-	// You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-	NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-	@throw exception;
-	return nil;
+	NSMutableDictionary *files = [NSMutableDictionary dictionary];
+	NSFileWrapper	*wrapper;
+	NSData			*auxData;
+
+	@try {
+		auxData = [NSKeyedArchiver archivedDataWithRootObject:self.project_metadata];
+		wrapper = [[NSFileWrapper alloc] initRegularFileWithContents:auxData];
+		[files setObject:wrapper forKey:@"metadata.bin"];
+
+		auxData = [NSKeyedArchiver archivedDataWithRootObject:self.project_pages];
+		wrapper = [[NSFileWrapper alloc] initRegularFileWithContents:auxData];
+		[files setObject:wrapper forKey:@"pages.bin"];
+
+		auxData = [NSKeyedArchiver archivedDataWithRootObject:self.project_resources];
+		wrapper = [[NSFileWrapper alloc] initRegularFileWithContents:auxData];
+		[files setObject:wrapper forKey:@"resources.bin"];
+
+		wrapper = [[NSFileWrapper alloc] initDirectoryWithFileWrappers:files];
+
+		return wrapper;
+	}
+	@catch (NSException *exception) {
+		*outError = [NSError errorWithDomain:@"BP_READ_WRITE" code:2 userInfo:exception.userInfo];
+		return nil;
+	}
 }
 
-- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
+- (BOOL)readFromFileWrapper:(NSFileWrapper *)fileWrapper ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
 {
-	// Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
-	// You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
-	// If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-	NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-	@throw exception;
-	return YES;
+	NSDictionary	*files;
+	NSFileWrapper	*wrapper;
+
+	@try {
+		files = [fileWrapper fileWrappers];
+
+		wrapper = [files objectForKey:@"metadata.bin"];
+		self.project_metadata = [NSKeyedUnarchiver unarchiveObjectWithData:wrapper.regularFileContents];
+
+		wrapper = [files objectForKey:@"pages.bin"];
+		self.project_pages = [NSKeyedUnarchiver unarchiveObjectWithData:wrapper.regularFileContents];
+
+		wrapper = [files objectForKey:@"resources.bin"];
+		self.project_resources = [NSKeyedUnarchiver unarchiveObjectWithData:wrapper.regularFileContents];
+
+		return YES;
+	}
+	@catch (NSException *exception) {
+		*outError = [NSError errorWithDomain:@"BP_READ_WRITE" code:1 userInfo:exception.userInfo];
+		return NO;
+	}
 }
 
+- (void)updateContentFromMemory
+{
+	[self.info_title setStringValue:[self.project_metadata objectForKey:kBP_METADATA_PAGE_TITLE]];
+	[self.info_author setStringValue:[self.project_metadata objectForKey:kBP_METADATA_AUTHOR_NAME]];
+	[self.info_authorEmail setStringValue:[self.project_metadata objectForKey:kBP_METADATA_AUTHOR_EMAIL]];
+}
+
+- (IBAction)updatedMetadata:(id)sender {
+	NSControl *control = sender;
+	switch (control.tag) {
+		case BP_METADATA_PAGE_TITLE:
+			[(NSMutableDictionary *)self.project_metadata setObject:control.stringValue forKey:kBP_METADATA_PAGE_TITLE];
+			break;
+
+		case BP_METADATA_AUTHOR_NAME:
+			[(NSMutableDictionary *)self.project_metadata setObject:control.stringValue forKey:kBP_METADATA_AUTHOR_NAME];
+			break;
+
+		case BP_METADATA_AUTHOR_EMAIL:
+			[(NSMutableDictionary *)self.project_metadata setObject:control.stringValue forKey:kBP_METADATA_AUTHOR_EMAIL];
+			break;
+
+		default:
+			break;
+	}
+}
 @end
