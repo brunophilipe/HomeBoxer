@@ -9,6 +9,9 @@
 #import "BPDocument.h"
 
 @implementation BPDocument
+{
+	BPPage *createdPage;
+}
 
 - (id)init
 {
@@ -22,6 +25,8 @@
 		[(NSMutableDictionary *)self.project_metadata setObject:@"John's Homepage" forKey:kBP_METADATA_PAGE_TITLE];
 		[(NSMutableDictionary *)self.project_metadata setObject:@"John Appleseed" forKey:kBP_METADATA_AUTHOR_NAME];
 		[(NSMutableDictionary *)self.project_metadata setObject:@"john.apple@example.com" forKey:kBP_METADATA_AUTHOR_EMAIL];
+
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addCreatedPage) name:kBP_ADD_CREATED_PAGE object:nil];
     }
     return self;
 }
@@ -107,6 +112,21 @@
 	[self.info_authorEmail setStringValue:[self.project_metadata objectForKey:kBP_METADATA_AUTHOR_EMAIL]];
 }
 
+- (void)dismissModal
+{
+	[NSApp stopModal];
+}
+
+- (void)addCreatedPage
+{
+	[self.project_pages performSelector:@selector(addObject:) withObject:createdPage];
+	createdPage = nil;
+
+	[self.tableView_pages reloadData];
+}
+
+#pragma mark - IBActions
+
 - (IBAction)updatedMetadata:(id)sender {
 	NSControl *control = sender;
 	switch (control.tag) {
@@ -126,4 +146,105 @@
 			break;
 	}
 }
+
+- (IBAction)action_addPage:(id)sender {
+	NSArray			*topLevelObjects;
+	BPPageWizard	*sheet;
+
+	[[NSBundle mainBundle] loadNibNamed:@"PageWizard" owner:nil topLevelObjects:&topLevelObjects];
+
+	for (NSObject *obj in topLevelObjects) {
+		if (obj.class == [BPPageWizard class]) {
+			sheet = (BPPageWizard *)obj;
+			break;
+		}
+	}
+
+	createdPage = [[BPPage alloc] init];
+
+	[sheet setPage:createdPage];
+	[sheet setIsNewPage:YES];
+	[sheet makeKeyWindow];
+
+	[NSApp beginSheet:sheet modalForWindow:[NSApp mainWindow] modalDelegate:nil didEndSelector:nil contextInfo:nil];
+	[NSApp runModalForWindow:sheet];
+
+    [NSApp endSheet:sheet];
+	[sheet orderOut:self];
+}
+
+- (IBAction)action_removePage:(id)sender {
+}
+
+- (IBAction)action_editPage:(id)sender {
+}
+
+- (IBAction)action_addResource:(id)sender {
+}
+
+- (IBAction)action_deleteResource:(id)sender {
+}
+
+- (IBAction)action_copyTemplate:(id)sender {
+}
+
+
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
+{
+	switch (aTableView.tag) {
+		case 1: return self.project_pages.count;
+		case 2: return self.project_resources.count;
+
+		default: return 0;
+	}
+}
+
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
+{
+	switch (aTableView.tag) {
+		case 1:
+		{
+			if ([aTableColumn.identifier isEqualToString:@"title"]) {
+				return [(BPPage *)[self.project_pages objectAtIndex:rowIndex] page_title];
+			} else if ([aTableColumn.identifier isEqualToString:@"slug"]) {
+				return [(BPPage *)[self.project_pages objectAtIndex:rowIndex] page_slug];
+			}
+		}
+
+		case 2:
+		{
+			return @"resource";
+		}
+
+		default: return nil;
+	}
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+	NSTableView *table = notification.object;
+	if (table.selectedRow >= 0) {
+		switch (table.tag) {
+			case 1:
+			{
+				[self.button_removePage setEnabled:YES];
+				[self.button_editPage setEnabled:YES];
+			}
+			case 2:
+			{
+				[self.button_removePage setEnabled:YES];
+				[self.button_editPage setEnabled:YES];
+			}
+		}
+	} else {
+		[self.button_removePage setEnabled:NO];
+		[self.button_editPage setEnabled:NO];
+	}
+}
+
 @end

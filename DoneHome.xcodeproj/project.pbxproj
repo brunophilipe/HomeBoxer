@@ -19,6 +19,9 @@
 		153C920E17E8079C008E7A2A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C91EA17E8079C008E7A2A /* Cocoa.framework */; };
 		153C921617E8079C008E7A2A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 153C921417E8079C008E7A2A /* InfoPlist.strings */; };
 		153C921817E8079C008E7A2A /* DoneHomeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 153C921717E8079C008E7A2A /* DoneHomeTests.m */; };
+		156A269817E8A4E2000189A5 /* BPPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 156A269717E8A4E2000189A5 /* BPPage.m */; };
+		156A269B17E8A5E2000189A5 /* BPPageWizard.m in Sources */ = {isa = PBXBuildFile; fileRef = 156A269A17E8A5E2000189A5 /* BPPageWizard.m */; };
+		156A269D17E8A600000189A5 /* PageWizard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156A269C17E8A600000189A5 /* PageWizard.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,11 @@
 		153C921317E8079C008E7A2A /* DoneHomeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoneHomeTests-Info.plist"; sourceTree = "<group>"; };
 		153C921517E8079C008E7A2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		153C921717E8079C008E7A2A /* DoneHomeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoneHomeTests.m; sourceTree = "<group>"; };
+		156A269617E8A4E2000189A5 /* BPPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPPage.h; path = Models/BPPage.h; sourceTree = "<group>"; };
+		156A269717E8A4E2000189A5 /* BPPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPPage.m; path = Models/BPPage.m; sourceTree = "<group>"; };
+		156A269917E8A5E2000189A5 /* BPPageWizard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPPageWizard.h; sourceTree = "<group>"; };
+		156A269A17E8A5E2000189A5 /* BPPageWizard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPPageWizard.m; sourceTree = "<group>"; };
+		156A269C17E8A600000189A5 /* PageWizard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageWizard.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,10 +125,14 @@
 		153C91F017E8079C008E7A2A /* DoneHome */ = {
 			isa = PBXGroup;
 			children = (
+				156A269517E8A4CE000189A5 /* Models */,
 				153C91FC17E8079C008E7A2A /* BPDocument.h */,
 				153C91FD17E8079C008E7A2A /* BPDocument.m */,
+				156A269917E8A5E2000189A5 /* BPPageWizard.h */,
+				156A269A17E8A5E2000189A5 /* BPPageWizard.m */,
 				153C91FF17E8079C008E7A2A /* BPDocument.xib */,
 				153C920217E8079C008E7A2A /* MainMenu.xib */,
+				156A269C17E8A600000189A5 /* PageWizard.xib */,
 				153C920517E8079C008E7A2A /* Images.xcassets */,
 				153C91F117E8079C008E7A2A /* Supporting Files */,
 			);
@@ -157,6 +169,15 @@
 				153C921417E8079C008E7A2A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		156A269517E8A4CE000189A5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				156A269617E8A4E2000189A5 /* BPPage.h */,
+				156A269717E8A4E2000189A5 /* BPPage.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +265,7 @@
 				153C920117E8079C008E7A2A /* BPDocument.xib in Resources */,
 				153C91FB17E8079C008E7A2A /* Credits.rtf in Resources */,
 				153C920417E8079C008E7A2A /* MainMenu.xib in Resources */,
+				156A269D17E8A600000189A5 /* PageWizard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +285,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				153C91FE17E8079C008E7A2A /* BPDocument.m in Sources */,
+				156A269B17E8A5E2000189A5 /* BPPageWizard.m in Sources */,
+				156A269817E8A4E2000189A5 /* BPPage.m in Sources */,
 				153C91F717E8079C008E7A2A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
