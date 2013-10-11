@@ -54,20 +54,11 @@
 	//Generate pages
 
 	for (NSUInteger i=0; i<pages.count; i++) {
-		BPPage *page = [pages objectAtIndex:i];
+		BPPage		*page = [pages objectAtIndex:i];
+		NSString	*content;
 
 		auxPath = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.html",(!page.isHome ? page.slug : @"index")]].relativePath;
 		tempContents = [[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"template" ofType:@"html"] encoding:NSUTF8StringEncoding error:&error] mutableCopy];
-
-		[tempContents replaceOccurrencesOfString:@"{project.title}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_PAGE_TITLE onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
-		[tempContents replaceOccurrencesOfString:@"{project.email}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_AUTHOR_EMAIL onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
-		[tempContents replaceOccurrencesOfString:@"{project.author}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_AUTHOR_NAME onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
-
-		[tempContents replaceOccurrencesOfString:@"{page.title}" withString:page.title options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
-		[tempContents replaceOccurrencesOfString:@"{render.menu}" withString:menu options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
-		[tempContents replaceOccurrencesOfString:@"{render.builddate}" withString:[formatter stringFromDate:[NSDate date]] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
-
-		NSString *content;
 
 		switch (page.mode) {
 			case BP_PAGE_MODE_HTML:
@@ -81,6 +72,14 @@
 		}
 
 		[tempContents replaceOccurrencesOfString:@"{render.contents}" withString:content options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+
+		[tempContents replaceOccurrencesOfString:@"{project.title}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_PAGE_TITLE onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+		[tempContents replaceOccurrencesOfString:@"{project.email}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_AUTHOR_EMAIL onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+		[tempContents replaceOccurrencesOfString:@"{project.author}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_AUTHOR_NAME onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+
+		[tempContents replaceOccurrencesOfString:@"{page.title}" withString:page.title options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+		[tempContents replaceOccurrencesOfString:@"{render.menu}" withString:menu options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+		[tempContents replaceOccurrencesOfString:@"{render.builddate}" withString:[formatter stringFromDate:[NSDate date]] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 
 		[BPSiteGenerator writeData:[tempContents dataUsingEncoding:NSUTF8StringEncoding] toPath:auxPath];
 	}
