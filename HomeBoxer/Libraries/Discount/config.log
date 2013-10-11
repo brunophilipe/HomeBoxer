@@ -1,0 +1,43 @@
+[echo ...Configuring for [markdown]
+Looking for cpp
+CPP=[/usr/bin/cpp], CPPFLAGS=[]
+looking for install
+ (/usr/bin/install)
+checking out the C compiler
+checking for "volatile" keyword
+checking for "const" keyword
+Checking for "inline" keyword
+defining WORD & DWORD scalar types
+ngc38878.c: In function ‘main’:
+ngc38878.c:29: warning: incompatible implicit declaration of built-in function ‘exit’
+ngc38878.c:16: warning: return type of ‘main’ is not ‘int’
+ngc38878.c: In function ‘main’:
+ngc38878.c:5: warning: initialization makes pointer from integer without a cast
+ngc38878.c:6: warning: initialization makes pointer from integer without a cast
+./configure.inc: line 1180: ngc38878: command not found
+looking for header pwd.h
+looking for the getpwuid function
+looking for the srandom function
+looking for the bzero function
+ngc38878.c: In function ‘main’:
+ngc38878.c:4: warning: incompatible implicit declaration of built-in function ‘bzero’
+looking for the random function
+looking for the strcasecmp function
+looking for the strncasecmp function
+looking for the fchdir function
+looking for header malloc.h
+test failed:  command was cc -c -o ngc38878.o ngc38878.c
+output:
+ngc38878.c:2:20: error: malloc.h: No such file or directory
+offending sources:
+ngc38878.c:
+/* AC_CHECK_HEADERS */
+#include <malloc.h>
+main() { }
+find is /usr/bin/find
+/bin/ln exists, and ln -s works
+	total      220.26
+sed is /usr/bin/sed
+generating Makefile
+generating version.c
+generating mkdio.h
