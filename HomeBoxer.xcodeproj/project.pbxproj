@@ -76,6 +76,7 @@
 		15107AB3180791DC002D2D08 /* NoodleLineNumberMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoodleLineNumberMarker.m; sourceTree = "<group>"; };
 		15107AB4180791DC002D2D08 /* NoodleLineNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoodleLineNumberView.h; sourceTree = "<group>"; };
 		15107AB5180791DC002D2D08 /* NoodleLineNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoodleLineNumberView.m; sourceTree = "<group>"; };
+		15107ABA18079405002D2D08 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		1513144917EAAE7C003D4637 /* BPSiteGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPSiteGenerator.h; sourceTree = "<group>"; };
 		1513144A17EAAE7C003D4637 /* BPSiteGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPSiteGenerator.m; sourceTree = "<group>"; };
 		153C91E717E8079C008E7A2A /* HomeBoxer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeBoxer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -370,6 +371,7 @@
 		153C91F117E8079C008E7A2A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				15107ABA18079405002D2D08 /* README.md */,
 				153C91F217E8079C008E7A2A /* HomeBoxer-Info.plist */,
 				153C91F317E8079C008E7A2A /* InfoPlist.strings */,
 				153C91F617E8079C008E7A2A /* main.m */,
