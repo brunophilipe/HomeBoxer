@@ -403,7 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				15107AAF180791DC002D2D08 /* NoodleLineNumber */,
-				15B7B09918076C8400CDDD12 /* DBTabBar */,
+				15B7B09918076C8400CDDD12 /* DMTabBar */,
 				153D25A11805D539005D2DCC /* GHMarkdownParser */,
 				153D258D1805D44C005D2DCC /* Discount.xcodeproj */,
 			);
@@ -610,7 +610,7 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		15B7B09918076C8400CDDD12 /* DBTabBar */ = {
+		15B7B09918076C8400CDDD12 /* DMTabBar */ = {
 			isa = PBXGroup;
 			children = (
 				15B7B09A18076C8400CDDD12 /* DMTabBar.h */,
@@ -618,7 +618,7 @@
 				15B7B09C18076C8400CDDD12 /* DMTabBarItem.h */,
 				15B7B09D18076C8400CDDD12 /* DMTabBarItem.m */,
 			);
-			name = DBTabBar;
+			name = DMTabBar;
 			path = Libraries/DBTabBar;
 			sourceTree = "<group>";
 		};

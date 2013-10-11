@@ -20,3 +20,10 @@ This is free software distributed under the Creative Commons Attribution-NonComm
 # Developer
 
 HomeBoxer was created and is being developed by [Bruno Philipe](http://www.brunophilipe.com).
+
+# Third party classes used
+
+* [NoodleLineNumberView](https://www.cocoacontrols.com/controls/noodlelinenumberview)
+* [DMTabBar](https://www.cocoacontrols.com/controls/dmtabbar)
+* [GHMarkdownParser](https://github.com/OliverLetterer/GHMarkdownParser)
+* [Discount](https://github.com/OliverLetterer/discount)

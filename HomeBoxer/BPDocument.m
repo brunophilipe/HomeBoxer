@@ -325,7 +325,21 @@
 				if (page.isHome) return [NSImage imageNamed:NSImageNameHomeTemplate];
 				else return [[NSImage alloc] initWithSize:NSMakeSize(1, 1)];
 			} else if ([aTableColumn.identifier isEqualToString:@"title"]) {
-				return page.title;
+				NSString *type;
+				switch (page.mode) {
+					case BP_PAGE_MODE_HTML:
+						type = @"HTML";
+						break;
+
+					case BP_PAGE_MODE_MARKDOWN:
+						type = @"Markdown";
+						break;
+
+					case BP_PAGE_MODE_PLAINTEXT:
+						type = @"plain text";
+						break;
+				}
+				return [NSString stringWithFormat:@"%@ – %@",page.title,type];
 			} else if ([aTableColumn.identifier isEqualToString:@"slug"]) {
 				return page.slug;
 			}
@@ -354,7 +368,6 @@
 				[self.button_editPage setEnabled:YES];
 
 				[self.liveEditor setString:[(BPPage *)[self.project_pages objectAtIndex:table.selectedRow] contents]];
-
 				break;
 			}
 			case 2:
@@ -385,6 +398,13 @@
 - (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMin ofSubviewAt:(NSInteger)dividerIndex
 {
 	return 250;
+}
+
+#pragma mark - Text Delegate
+
+- (void)textDidChange:(NSNotification *)aNotification
+{
+	[(BPPage *)[self.project_pages objectAtIndex:[self.tableView_pages selectedRow]] setContents:[self.liveEditor.string copy]];
 }
 
 @end

@@ -67,7 +67,7 @@
 				break;
 
 			case BP_PAGE_MODE_MARKDOWN:
-				content = [GHMarkdownParser HTMLStringFromMarkdownString:page.contents];
+				content = [GHMarkdownParser flavoredHTMLStringFromMarkdownString:page.contents];
 				break;
 		}
 

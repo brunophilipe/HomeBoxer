@@ -27,7 +27,7 @@ typedef enum
 
 #define kBP_ADD_CREATED_PAGE		@"BP_ADD_CREATED_PAGE"
 
-@interface BPDocument : NSDocument <NSTableViewDataSource, NSTableViewDelegate, NSOpenSavePanelDelegate, NSSplitViewDelegate>
+@interface BPDocument : NSDocument <NSTableViewDataSource, NSTableViewDelegate, NSOpenSavePanelDelegate, NSSplitViewDelegate, NSTextDelegate>
 
 @property NSDictionary	*project_metadata;
 @property NSArray		*project_pages;
