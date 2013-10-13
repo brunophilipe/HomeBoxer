@@ -7,7 +7,7 @@
 //
 
 #import "BPPageWizard.h"
-#import "BPDocument.h"
+#import "BPHomeBoxerProject.h"
 
 @implementation BPPageWizard
 {

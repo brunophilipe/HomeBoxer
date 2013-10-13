@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Bruno Philipe. All rights reserved.
 //
 
-#import "BPDocument.h"
+#import "BPHomeBoxerProject.h"
 
-@implementation BPDocument
+@implementation BPHomeBoxerProject
 {
 	BPPage *createdPage;
 	time_t lastInteractionTime;
@@ -28,6 +28,8 @@
 		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_PAGE_TITLE];
 		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_AUTHOR_NAME];
 		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_AUTHOR_EMAIL];
+		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_METADESC];
+		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_METAKEYS];
 
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addCreatedPage) name:kBP_ADD_CREATED_PAGE object:nil];
 
@@ -53,7 +55,7 @@
 {
 	// Override returning the nib file name of the document
 	// If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
-	return @"BPDocument";
+	return @"BPHomeBoxerProject";
 }
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController
@@ -78,12 +80,10 @@
 					break;
 
 				case 1:
-					[self.liveEditorContainer setHidden:NO];
 					[self.livePreview setHidden:YES];
 					break;
 
 				case 2:
-					[self.liveEditorContainer setHidden:YES];
 					[self.livePreview setHidden:NO];
 					break;
 			}
@@ -173,6 +173,7 @@
 	[self.info_title setStringValue:[self.project_metadata objectForKey:kBP_METADATA_PAGE_TITLE]];
 	[self.info_author setStringValue:[self.project_metadata objectForKey:kBP_METADATA_AUTHOR_NAME]];
 	[self.info_authorEmail setStringValue:[self.project_metadata objectForKey:kBP_METADATA_AUTHOR_EMAIL]];
+	[self.info_metaDesc setStringValue:[self.project_metadata objectForKey:kBP_METADATA_METADESC]];
 }
 
 - (void)dismissModal
@@ -562,6 +563,7 @@
 				[self.button_setHomePage setEnabled:![[self.project_pages objectAtIndex:table.selectedRow] isHome]];
 				[self.button_editPage setEnabled:YES];
 				[self.button_copyPageTemplate setEnabled:YES];
+				[self.liveEditorContainer setHidden:NO];
 
 				[self.liveEditor setString:[(BPPage *)[self.project_pages objectAtIndex:table.selectedRow] contents]];
 				break;
@@ -584,6 +586,7 @@
 				[self.button_editPage setEnabled:NO];
 				[self.button_replaceResource setEnabled:NO];
 				[self.button_copyPageTemplate setEnabled:NO];
+				[self.liveEditorContainer setHidden:YES];
 				break;
 			}
 

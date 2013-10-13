@@ -7,7 +7,7 @@
 //
 
 #import "BPSiteGenerator.h"
-#import "BPDocument.h"
+#import "BPHomeBoxerProject.h"
 
 @implementation BPSiteGenerator
 
@@ -104,7 +104,9 @@
 		[tempContents replaceOccurrencesOfString:@"{render.menu}" withString:menu options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 		[tempContents replaceOccurrencesOfString:@"{render.builddate}" withString:[formatter stringFromDate:[NSDate date]] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 
-		[BPSiteGenerator writeData:[tempContents dataUsingEncoding:NSUTF8StringEncoding] toPath:auxPath];
+		// TidyHTML
+
+		[BPSiteGenerator writeData:[[BPSiteGenerator executeTidyHTMLOnString:tempContents] dataUsingEncoding:NSUTF8StringEncoding] toPath:auxPath];
 	}
 
 	//Copy files
@@ -131,6 +133,55 @@
 	[BPSiteGenerator writeData:[[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"glyphicons-halflings-regular-ttf" ofType:@"data"] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding] toPath:auxPath];
 	auxPath = [url URLByAppendingPathComponent:@"fonts/glyphicons-halflings-regular.woff"].relativePath;
 	[BPSiteGenerator writeData:[[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"glyphicons-halflings-regular-woff" ofType:@"data"] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding] toPath:auxPath];
+}
+
++ (NSString *)executeTidyHTMLOnString:(NSString *)inputStr
+{
+	NSString *outputStr = nil;
+	const char* input = [inputStr UTF8String];
+	TidyBuffer output = {0};
+	TidyBuffer errbuf = {0};
+	int rc = -1;
+	Bool ok;
+
+	TidyDoc tdoc = tidyCreate();                     // Initialize "document"
+//	printf( "Tidying:\t%s\n", input);
+
+	ok = tidyOptSetBool(tdoc, TidyXhtmlOut, no);  // Convert to XHTML TidyHideEndTags
+	if(ok)
+		ok = tidyOptSetInt(tdoc, TidyIndentContent, TidyAutoState);
+	if(ok)
+		ok = tidyOptSetInt(tdoc, TidyWrapLen, 0);
+	if(ok)
+		ok = tidyOptSetInt(tdoc, TidyIndentSpaces, 4);
+	if (ok)
+		rc = tidySetErrorBuffer(tdoc, &errbuf);      // Capture diagnostics
+	if(rc >= 0)
+		rc = tidyParseString(tdoc, input);           // Parse the input
+	if(rc >= 0)
+		rc = tidyCleanAndRepair(tdoc);               // Tidy it up!
+	if(rc >= 0)
+		rc = tidyRunDiagnostics(tdoc);               // Kvetch
+	if(rc > 1)                                    // If error, force output.
+		rc =(tidyOptSetBool(tdoc, TidyForceOutput, yes) ? rc : -1);
+	if(rc >= 0)
+		rc = tidySaveBuffer(tdoc, &output);          // Pretty Print
+
+	if(rc >= 0)
+	{
+		if(rc > 0)
+//			printf( "\nDiagnostics:\n\n%s", errbuf.bp);
+//		printf( "\nAnd here is the result:\n\n%s", output.bp);
+		outputStr = [NSString stringWithUTF8String:(const char *)output.bp];
+	}
+	else
+		printf( "A severe error (%d) occurred.\n", rc);
+
+	tidyBufFree( &output);
+	tidyBufFree( &errbuf);
+	tidyRelease( tdoc);
+
+	return outputStr;
 }
 
 + (BOOL)writeData:(NSData *)data toPath:(NSString *)path

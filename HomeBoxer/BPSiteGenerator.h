@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "GHMarkdownParser.h"
+#import "tidy.h"
+#include "buffio.h"
+#include <stdio.h>
+#include <errno.h>
 
 @interface BPSiteGenerator : NSObject
 

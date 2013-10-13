@@ -30,7 +30,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>1</integer>
 			<key>NSDocumentClass</key>
-			<string>BPDocument</string>
+			<string>BPHomeBoxerProject</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>

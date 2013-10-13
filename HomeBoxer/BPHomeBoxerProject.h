@@ -25,11 +25,13 @@ typedef enum
 #define kBP_METADATA_PAGE_TITLE		@"BP_METADATA_PAGE_TITLE"
 #define kBP_METADATA_AUTHOR_NAME	@"BP_METADATA_AUTHOR_NAME"
 #define kBP_METADATA_AUTHOR_EMAIL	@"BP_METADATA_AUTHOR_EMAIL"
+#define kBP_METADATA_METAKEYS		@"BP_METADATA_METAKEYS"
+#define kBP_METADATA_METADESC		@"BP_METADATA_METADESC"
 #define kBP_METADATA_LAST_UID		@"BP_METADATA_LAST_UID"
 
 #define kBP_ADD_CREATED_PAGE		@"BP_ADD_CREATED_PAGE"
 
-@interface BPDocument : NSDocument <NSTableViewDataSource, NSTableViewDelegate, NSOpenSavePanelDelegate, NSSplitViewDelegate, NSTextDelegate>
+@interface BPHomeBoxerProject : NSDocument <NSTableViewDataSource, NSTableViewDelegate, NSOpenSavePanelDelegate, NSSplitViewDelegate, NSTextDelegate>
 
 @property NSDictionary	*project_metadata;
 @property NSArray		*project_pages;
@@ -38,6 +40,8 @@ typedef enum
 @property (strong) IBOutlet NSTextField *info_title;
 @property (strong) IBOutlet NSTextField *info_author;
 @property (strong) IBOutlet NSTextField *info_authorEmail;
+@property (strong) IBOutlet NSTokenField *info_metaKeys;
+@property (strong) IBOutlet NSTextField *info_metaDesc;
 
 @property (strong) IBOutlet NSButton *button_addPage;
 @property (strong) IBOutlet NSButton *button_removePage;

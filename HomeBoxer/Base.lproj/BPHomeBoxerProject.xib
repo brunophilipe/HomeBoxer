@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4510"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="BPDocument">
+        <customObject id="-2" userLabel="File's Owner" customClass="BPHomeBoxerProject">
             <connections>
                 <outlet property="button_addPage" destination="hoo-TB-zjl" id="v0U-yM-vSE"/>
                 <outlet property="button_addResource" destination="Iab-FJ-nAX" id="E3D-C2-j5i"/>
@@ -18,6 +18,8 @@
                 <outlet property="button_setHomePage" destination="LZ2-gw-Tad" id="Unj-jy-XEH"/>
                 <outlet property="info_author" destination="gjE-CI-JAe" id="9zM-W6-B00"/>
                 <outlet property="info_authorEmail" destination="tYy-rC-pte" id="RMq-sh-dNO"/>
+                <outlet property="info_metaDesc" destination="59g-3n-3wB" id="eCd-MR-K7u"/>
+                <outlet property="info_metaKeys" destination="QNE-rv-8Er" id="m31-a5-RJt"/>
                 <outlet property="info_title" destination="OOW-vE-Ocv" id="pho-xz-cxC"/>
                 <outlet property="liveActivity" destination="bjO-Vi-hdY" id="FNI-gi-uuY"/>
                 <outlet property="liveEditor" destination="BoW-Pz-0pi" id="FqL-jZ-fnA"/>
@@ -492,7 +494,15 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="pmh-3B-RSX"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="iHA-qU-Kwg"/>
-                    <toolbarItem implicitItemIdentifier="97264FF2-3D02-4AF0-9DF9-08AE637439A1" label="Quicksave" paletteLabel="Quicksave" tag="-1" id="lew-7d-ws3"/>
+                    <toolbarItem implicitItemIdentifier="97264FF2-3D02-4AF0-9DF9-08AE637439A1" label="Quicksave" paletteLabel="Quicksave" tag="-1" image="Save" id="lew-7d-ws3">
+                        <connections>
+                            <binding destination="N4w-Wk-AYi" name="enabled" keyPath="hasUnappliedChanges" id="JJo-Ki-Sk4">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="659470AE-85A5-45DE-A52F-369DE78A5A9C" label="Export" paletteLabel="Export" tag="-1" image="Export_1024" id="orN-1e-LEb">
                         <connections>
                             <action selector="action_generateSite:" target="-2" id="s0l-b1-oGu"/>
@@ -511,6 +521,7 @@
             </connections>
         </window>
         <customObject id="-3" userLabel="Application"/>
+        <userDefaultsController representsSharedInstance="YES" id="N4w-Wk-AYi"/>
     </objects>
     <resources>
         <image name="Export_1024" width="512" height="512"/>
@@ -518,6 +529,7 @@
         <image name="NSAddTemplate" width="8" height="8"/>
         <image name="NSHomeTemplate" width="14" height="13"/>
         <image name="NSRemoveTemplate" width="8" height="8"/>
+        <image name="Save" width="128" height="128"/>
         <image name="reload" width="16" height="16"/>
         <image name="tag" width="16" height="16"/>
     </resources>
