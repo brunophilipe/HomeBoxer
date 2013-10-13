@@ -176,6 +176,13 @@
 	}
 }
 
+- (void)updateChangeCount:(NSDocumentChangeType)change
+{
+	[super updateChangeCount:change];
+
+	self.hasUnsavedChanges = [self isDocumentEdited]||[self hasUnautosavedChanges];
+}
+
 - (void)updateContentFromMemory
 {
 	[self.info_title setStringValue:[self.project_metadata objectForKey:kBP_METADATA_PAGE_TITLE]];

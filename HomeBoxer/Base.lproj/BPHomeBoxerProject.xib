@@ -572,11 +572,8 @@
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="iHA-qU-Kwg"/>
                     <toolbarItem implicitItemIdentifier="97264FF2-3D02-4AF0-9DF9-08AE637439A1" label="Quicksave" paletteLabel="Quicksave" tag="-1" image="Save" id="lew-7d-ws3">
                         <connections>
-                            <binding destination="N4w-Wk-AYi" name="enabled" keyPath="hasUnappliedChanges" id="JJo-Ki-Sk4">
-                                <dictionary key="options">
-                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                </dictionary>
-                            </binding>
+                            <action selector="saveDocument:" target="-1" id="ssI-1K-hOp"/>
+                            <binding destination="-2" name="enabled" keyPath="self.hasUnsavedChanges" id="iAc-9O-mN3"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="659470AE-85A5-45DE-A52F-369DE78A5A9C" label="Export" paletteLabel="Export" tag="-1" image="Export_1024" id="orN-1e-LEb">

@@ -40,6 +40,8 @@ typedef enum
 @property NSArray		*project_pages;
 @property NSArray		*project_resources;
 
+@property BOOL hasUnsavedChanges;
+
 @property (strong) IBOutlet NSTextField *info_title;
 @property (strong) IBOutlet NSTextField *info_author;
 @property (strong) IBOutlet NSTextField *info_authorEmail;
