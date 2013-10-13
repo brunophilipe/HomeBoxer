@@ -30,7 +30,6 @@
 		153D24831805BE3E005D2DCC /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 153D24811805BDA3005D2DCC /* jquery.min.js */; };
 		153D25A61805D539005D2DCC /* GHMarkdownParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 153D25A31805D539005D2DCC /* GHMarkdownParser.m */; };
 		153D25A71805D539005D2DCC /* NSString+GHMarkdownParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 153D25A51805D539005D2DCC /* NSString+GHMarkdownParser.m */; };
-		153D26271805D708005D2DCC /* libmarkdown.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 153D26261805D708005D2DCC /* libmarkdown.a */; };
 		153D26291805EE62005D2DCC /* homeboxer.css in Resources */ = {isa = PBXBuildFile; fileRef = 153D26281805EE62005D2DCC /* homeboxer.css */; };
 		156A269817E8A4E2000189A5 /* BPPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 156A269717E8A4E2000189A5 /* BPPage.m */; };
 		156A269B17E8A5E2000189A5 /* BPPageWizard.m in Sources */ = {isa = PBXBuildFile; fileRef = 156A269A17E8A5E2000189A5 /* BPPageWizard.m */; };
@@ -50,6 +49,7 @@
 		15B7B0B5180787BB00CDDD12 /* nothing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15B7B0B3180787BB00CDDD12 /* nothing@2x.png */; };
 		15ED2353180A5261008A3255 /* Save.icns in Resources */ = {isa = PBXBuildFile; fileRef = 15ED2352180A5261008A3255 /* Save.icns */; };
 		15ED235B180A6559008A3255 /* libtidy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15ED2357180A6559008A3255 /* libtidy.a */; };
+		15ED235D180A7DF8008A3255 /* libmarkdown.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15ED235C180A7DF8008A3255 /* libmarkdown.a */; };
 		15F42AC017EAB773001C4B46 /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 15F42ABF17EAB773001C4B46 /* template.html */; };
 		15F42AC717EABB17001C4B46 /* bootstrap.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 15F42AC117EABB17001C4B46 /* bootstrap.min.css */; };
 		15F42AC917EABB17001C4B46 /* glyphicons-halflings-regular-eot.data in Resources */ = {isa = PBXBuildFile; fileRef = 15F42AC317EABB17001C4B46 /* glyphicons-halflings-regular-eot.data */; };
@@ -68,13 +68,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 153C91E617E8079C008E7A2A;
 			remoteInfo = HomeBoxer;
-		};
-		153D26241805D5D4005D2DCC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 153D25BC1805D5C7005D2DCC /* Discount.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 153D25401805D44C005D2DCC;
-			remoteInfo = Discount;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -116,7 +109,6 @@
 		153C921517E8079C008E7A2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		153C921717E8079C008E7A2A /* HomeBoxerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBoxerTests.m; sourceTree = "<group>"; };
 		153D24811805BDA3005D2DCC /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = jquery.min.js; path = Assets/jquery.min.js; sourceTree = "<group>"; };
-		153D258D1805D44C005D2DCC /* Discount.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Discount.xcodeproj; path = Libraries/Discount/Discount.xcodeproj; sourceTree = "<group>"; };
 		153D25A21805D539005D2DCC /* GHMarkdownParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHMarkdownParser.h; sourceTree = "<group>"; };
 		153D25A31805D539005D2DCC /* GHMarkdownParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMarkdownParser.m; sourceTree = "<group>"; };
 		153D25A41805D539005D2DCC /* NSString+GHMarkdownParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GHMarkdownParser.h"; sourceTree = "<group>"; };
@@ -266,6 +258,7 @@
 		15ED2358180A6559008A3255 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
 		15ED2359180A6559008A3255 /* tidy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tidy.h; sourceTree = "<group>"; };
 		15ED235A180A6559008A3255 /* tidyenum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tidyenum.h; sourceTree = "<group>"; };
+		15ED235C180A7DF8008A3255 /* libmarkdown.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmarkdown.a; path = ../../../../../usr/local/Cellar/discount/2.1.6/lib/libmarkdown.a; sourceTree = "<group>"; };
 		15F42ABF17EAB773001C4B46 /* template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = template.html; path = Assets/template.html; sourceTree = "<group>"; };
 		15F42AC117EABB17001C4B46 /* bootstrap.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = bootstrap.min.css; path = Assets/bootstrap.min.css; sourceTree = "<group>"; };
 		15F42AC217EABB17001C4B46 /* bootstrap.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = bootstrap.min.js; path = Assets/bootstrap.min.js; sourceTree = "<group>"; };
@@ -280,7 +273,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				153D26271805D708005D2DCC /* libmarkdown.a in Frameworks */,
+				15ED235D180A7DF8008A3255 /* libmarkdown.a in Frameworks */,
 				153C91EB17E8079C008E7A2A /* Cocoa.framework in Frameworks */,
 				15ED235B180A6559008A3255 /* libtidy.a in Frameworks */,
 			);
@@ -354,6 +347,7 @@
 		153C91E917E8079C008E7A2A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15ED235C180A7DF8008A3255 /* libmarkdown.a */,
 				153D26261805D708005D2DCC /* libmarkdown.a */,
 				153D25A81805D5C7005D2DCC /* Discount */,
 				153C91EA17E8079C008E7A2A /* Cocoa.framework */,
@@ -432,16 +426,8 @@
 				15107AAF180791DC002D2D08 /* NoodleLineNumber */,
 				15B7B09918076C8400CDDD12 /* DMTabBar */,
 				153D25A11805D539005D2DCC /* GHMarkdownParser */,
-				153D258D1805D44C005D2DCC /* Discount.xcodeproj */,
 			);
 			name = Libraries;
-			sourceTree = "<group>";
-		};
-		153D258E1805D44C005D2DCC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		153D25A11805D539005D2DCC /* GHMarkdownParser */ = {
@@ -683,7 +669,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				153D26251805D5D4005D2DCC /* PBXTargetDependency */,
 			);
 			name = HomeBoxer;
 			productName = HomeBoxer;
@@ -741,10 +726,6 @@
 				{
 					ProductGroup = 153D25BD1805D5C7005D2DCC /* Products */;
 					ProjectRef = 153D25BC1805D5C7005D2DCC /* Discount.xcodeproj */;
-				},
-				{
-					ProductGroup = 153D258E1805D44C005D2DCC /* Products */;
-					ProjectRef = 153D258D1805D44C005D2DCC /* Discount.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -841,11 +822,6 @@
 			isa = PBXTargetDependency;
 			target = 153C91E617E8079C008E7A2A /* HomeBoxer */;
 			targetProxy = 153C920F17E8079C008E7A2A /* PBXContainerItemProxy */;
-		};
-		153D26251805D5D4005D2DCC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Discount;
-			targetProxy = 153D26241805D5D4005D2DCC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -972,6 +948,7 @@
 					"$(inherited)",
 					/Users/bruno/Workspace/XCode/HomeBoxer/HomeBoxer/Libraries/Discount,
 					/Users/bruno/Workspace/XCode/HomeBoxer/HomeBoxer/Libraries/TidyHTML,
+					/usr/local/Cellar/discount/2.1.6/lib,
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -993,6 +970,7 @@
 					"$(inherited)",
 					/Users/bruno/Workspace/XCode/HomeBoxer/HomeBoxer/Libraries/Discount,
 					/Users/bruno/Workspace/XCode/HomeBoxer/HomeBoxer/Libraries/TidyHTML,
+					/usr/local/Cellar/discount/2.1.6/lib,
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
