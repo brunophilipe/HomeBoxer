@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "BPPageWizard.h"
+#import "BPResource.h"
 #import "BPSiteGenerator.h"
 #import "DMTabBar.h"
 #import "MarkerLineNumberView.h"
@@ -24,6 +25,7 @@ typedef enum
 #define kBP_METADATA_PAGE_TITLE		@"BP_METADATA_PAGE_TITLE"
 #define kBP_METADATA_AUTHOR_NAME	@"BP_METADATA_AUTHOR_NAME"
 #define kBP_METADATA_AUTHOR_EMAIL	@"BP_METADATA_AUTHOR_EMAIL"
+#define kBP_METADATA_LAST_UID		@"BP_METADATA_LAST_UID"
 
 #define kBP_ADD_CREATED_PAGE		@"BP_ADD_CREATED_PAGE"
 
@@ -54,6 +56,7 @@ typedef enum
 @property (strong) IBOutlet NSScrollView *liveEditorContainer;
 @property (strong) IBOutlet NSTextView *liveEditor;
 @property (strong) IBOutlet NSImageView *livePreview;
+@property (strong) IBOutlet NSProgressIndicator *liveActivity;
 
 - (IBAction)updatedMetadata:(id)sender;
 

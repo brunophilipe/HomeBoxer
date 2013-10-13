@@ -11,6 +11,9 @@
 @implementation BPDocument
 {
 	BPPage *createdPage;
+	time_t lastInteractionTime;
+	BOOL didSave;
+	MarkerLineNumberView *lineNumberView;
 }
 
 - (id)init
@@ -32,9 +35,17 @@
 		[homePage setTitle:@"Home Page"];
 		[homePage setSlug:@"home"];
 		[homePage setMode:BP_PAGE_MODE_MARKDOWN];
-		[homePage setContents:@"Home Page\n=========\n\nThis is your homepage. Fill it with content!"];
+		[homePage setContents:[NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"HomeDefault" withExtension:@"md"] encoding:NSUTF8StringEncoding error:nil]];
 		[homePage setHome:YES];
 		[self.project_pages performSelector:@selector(addObject:) withObject:homePage];
+
+		NSURL *aligURL = [[NSBundle mainBundle] URLForResource:@"alligator" withExtension:@"jpg"];
+		[self addResourcesForURLs:@[aligURL]];
+
+		NSTimer *evt = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(checkLastInteractionTimerFired:) userInfo:nil repeats:YES];
+		[evt fire];
+
+		lastInteractionTime = 0;
     }
     return self;
 }
@@ -80,16 +91,18 @@
 		}
 	}];
 
-	MarkerLineNumberView *lineNumberView = [[MarkerLineNumberView alloc] initWithScrollView:self.liveEditorContainer];
+	[self updateContentFromMemory];
+
+	[self.liveEditor setFont:[NSFont userFixedPitchFontOfSize:11]];
+
+	lineNumberView = [[MarkerLineNumberView alloc] initWithScrollView:self.liveEditorContainer];
+
+//	[lineNumberView ]
 
 	[self.liveEditorContainer setVerticalRulerView:lineNumberView];
 	[self.liveEditorContainer setHasHorizontalRuler:NO];
 	[self.liveEditorContainer setHasVerticalRuler:YES];
 	[self.liveEditorContainer setRulersVisible:YES];
-
-	[self.liveEditor setFont:[NSFont userFixedPitchFontOfSize:11]];
-
-	[self updateContentFromMemory];
 }
 
 + (BOOL)autosavesInPlace
@@ -209,6 +222,65 @@
 	return value;
 }
 
+- (void)addResourcesForURLs:(NSArray *)urls
+{
+	BPResource *resource;
+
+	NSNumber *lastUID = [self.project_metadata objectForKey:kBP_METADATA_LAST_UID];
+	NSUInteger lUID;
+
+	if (!lastUID) {
+		lUID = 0;
+	} else {
+		lUID = [lastUID unsignedIntegerValue];
+	}
+
+	for (NSURL *url in urls) {
+		resource = [[BPResource alloc] init];
+		[resource setData:[NSData dataWithContentsOfURL:url]];
+		[resource setFilename:[url lastPathComponent]];
+		[resource setUid:++lUID];
+
+		[self.project_resources performSelector:@selector(addObject:) withObject:resource];
+	}
+
+	[(NSMutableDictionary *)self.project_metadata setObject:[NSNumber numberWithUnsignedInteger:lUID] forKey:kBP_METADATA_LAST_UID];
+
+	[self.tableView_resources reloadData];
+}
+
+- (void)checkLastInteractionTimerFired:(NSTimer *)timer
+{
+//	[lineNumberView setNeedsDisplay:YES];
+
+	if (lastInteractionTime == 0) {
+		didSave = NO;
+		return;
+	}
+
+	time_t timeNow;
+	time(&timeNow);
+
+	NSLog(@"Verifying!");
+
+	if (timeNow+3 > lastInteractionTime) {
+		//Event threshold reached
+		lastInteractionTime = 0;
+
+		[self.livePreview setAnimates:YES];
+
+		[(BPPage *)[self.project_pages objectAtIndex:[self.tableView_pages selectedRow]] setContents:[self.liveEditor.string copy]];
+		didSave = YES;
+
+		NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+			[self.livePreview setAnimates:NO];
+		}];
+		[op performSelector:@selector(start) withObject:nil afterDelay:2];
+	} else {
+		didSave = NO;
+	}
+}
+
 #pragma mark - IBActions
 
 - (IBAction)updatedMetadata:(id)sender {
@@ -268,12 +340,45 @@
 }
 
 - (IBAction)action_addResource:(id)sender {
+	NSOpenPanel *panel = [NSOpenPanel openPanel];
+
+	[panel setAllowsOtherFileTypes:YES];
+	[panel setCanChooseDirectories:NO];
+	[panel setAllowsMultipleSelection:YES];
+	[panel setCanSelectHiddenExtension:YES];
+
+	NSTextField *field = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 250, 50)];
+
+	[field setStringValue:@"Select one or more files to import into your project."];
+	[field setBordered:NO];
+	[field setBackgroundColor:[NSColor clearColor]];
+	[field setEditable:NO];
+	[field setAlignment:NSCenterTextAlignment];
+	[field sizeToFit];
+
+	[panel setAccessoryView:field];
+
+	[panel beginSheetModalForWindow:[NSApp mainWindow] completionHandler:^(NSInteger result){
+		if (result) {
+			[self addResourcesForURLs:[panel URLs]];
+		}
+	}];
 }
 
 - (IBAction)action_deleteResource:(id)sender {
+	NSAlert *alert = [NSAlert alertWithMessageText:nil defaultButton:@"Yes" alternateButton:@"No" otherButton:nil informativeTextWithFormat:@"Are you sure you want to delete the selected resource files? This operation can not be undone!"];
+	if ([alert runModal]) {
+		[self.project_resources performSelector:@selector(removeObjectsAtIndexes:) withObject:[self.tableView_resources selectedRowIndexes]];
+		[self.tableView_resources reloadData];
+	}
 }
 
 - (IBAction)action_copyTemplate:(id)sender {
+	NSUInteger row = [self.tableView_resources selectedRow];
+	BPResource *res = [self.project_resources objectAtIndex:row];
+
+	[[NSPasteboard generalPasteboard] clearContents];
+	[[NSPasteboard generalPasteboard] writeObjects:@[[NSString stringWithFormat:@"{resource.%lu}",(unsigned long)res.uid]]];
 }
 
 - (IBAction)action_generateSite:(id)sender {
@@ -347,7 +452,12 @@
 
 		case 2:
 		{
-			return @"resource";
+			BPResource *res = [self.project_resources objectAtIndex:rowIndex];
+			if ([aTableColumn.identifier isEqualToString:@"id"]) {
+				return [NSNumber numberWithUnsignedInteger:res.uid];
+			} else if ([aTableColumn.identifier isEqualToString:@"filename"]) {
+				return res.filename;
+			}
 		}
 
 		default: return nil;
@@ -374,6 +484,8 @@
 			{
 				[self.button_removeResource setEnabled:YES];
 				[self.button_copyTemplate setEnabled:YES];
+
+//				[self.livePreview setImage:<#(NSImage *)#>]
 				break;
 			}
 		}
@@ -404,7 +516,7 @@
 
 - (void)textDidChange:(NSNotification *)aNotification
 {
-	[(BPPage *)[self.project_pages objectAtIndex:[self.tableView_pages selectedRow]] setContents:[self.liveEditor.string copy]];
+	time(&lastInteractionTime);
 }
 
 @end

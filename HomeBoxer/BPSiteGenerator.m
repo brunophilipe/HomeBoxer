@@ -50,6 +50,7 @@
 	[fm createDirectoryAtURL:[url URLByAppendingPathComponent:@"css"] withIntermediateDirectories:NO attributes:NO error:&error];
 	[fm createDirectoryAtURL:[url URLByAppendingPathComponent:@"js"] withIntermediateDirectories:NO attributes:NO error:&error];
 	[fm createDirectoryAtURL:[url URLByAppendingPathComponent:@"fonts"] withIntermediateDirectories:NO attributes:NO error:&error];
+	[fm createDirectoryAtURL:[url URLByAppendingPathComponent:@"files"] withIntermediateDirectories:NO attributes:NO error:&error];
 
 	//Generate pages
 
@@ -59,6 +60,11 @@
 
 		auxPath = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.html",(!page.isHome ? page.slug : @"index")]].relativePath;
 		tempContents = [[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"template" ofType:@"html"] encoding:NSUTF8StringEncoding error:&error] mutableCopy];
+
+		if (error) {
+			NSAlert *alert = [NSAlert alertWithError:error];
+			[alert runModal];
+		}
 
 		switch (page.mode) {
 			case BP_PAGE_MODE_HTML:
@@ -73,6 +79,13 @@
 
 		[tempContents replaceOccurrencesOfString:@"{render.contents}" withString:content options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 
+		for (BPResource *resource in resources) {
+			NSString *path = [NSString stringWithFormat:@"files/%@",resource.filename];
+			NSString *tag = [NSString stringWithFormat:@"{resource.%ld}",(unsigned long)resource.uid];
+
+			[tempContents replaceOccurrencesOfString:tag withString:path options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+		}
+
 		[tempContents replaceOccurrencesOfString:@"{project.title}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_PAGE_TITLE onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 		[tempContents replaceOccurrencesOfString:@"{project.email}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_AUTHOR_EMAIL onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 		[tempContents replaceOccurrencesOfString:@"{project.author}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_AUTHOR_NAME onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
@@ -85,6 +98,11 @@
 	}
 
 	//Copy files
+
+	for (BPResource *resource in resources) {
+		auxPath = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"/files/%@",resource.filename]].relativePath;
+		[BPSiteGenerator writeData:resource.data toPath:auxPath];
+	}
 
 	auxPath = [url URLByAppendingPathComponent:@"css/bootstrap.min.css"].relativePath;
 	[BPSiteGenerator writeData:[[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"bootstrap" ofType:@"min.css"] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding] toPath:auxPath];
