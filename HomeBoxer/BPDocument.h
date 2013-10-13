@@ -45,7 +45,9 @@ typedef enum
 @property (strong) IBOutlet NSButton *button_setHomePage;
 @property (strong) IBOutlet NSButton *button_addResource;
 @property (strong) IBOutlet NSButton *button_removeResource;
-@property (strong) IBOutlet NSButton *button_copyTemplate;
+@property (strong) IBOutlet NSButton *button_copyPageTemplate;
+@property (strong) IBOutlet NSButton *button_copyResourceTemplate;
+@property (strong) IBOutlet NSButton *button_replaceResource;
 
 @property (strong) IBOutlet NSTableView *tableView_pages;
 @property (strong) IBOutlet NSTableView *tableView_resources;
@@ -65,10 +67,14 @@ typedef enum
 - (IBAction)action_editPage:(id)sender;
 - (IBAction)action_setHomePage:(id)sender;
 - (IBAction)action_addResource:(id)sender;
+- (IBAction)action_replaceResource:(id)sender;
 - (IBAction)action_deleteResource:(id)sender;
+
 - (IBAction)action_copyTemplate:(id)sender;
 
 - (IBAction)action_generateSite:(id)sender;
+
+- (IBAction)action_insertTag:(id)sender;
 
 - (void)dismissModal;
 

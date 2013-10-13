@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15063E4B1808F72000A67E7D /* reload.png in Resources */ = {isa = PBXBuildFile; fileRef = 15063E491808F72000A67E7D /* reload.png */; };
+		15063E4C1808F72000A67E7D /* reload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15063E4A1808F72000A67E7D /* reload@2x.png */; };
 		15107AB6180791DC002D2D08 /* MarkerLineNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15107AB1180791DC002D2D08 /* MarkerLineNumberView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		15107AB7180791DC002D2D08 /* NoodleLineNumberMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 15107AB3180791DC002D2D08 /* NoodleLineNumberMarker.m */; };
 		15107AB8180791DC002D2D08 /* NoodleLineNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15107AB5180791DC002D2D08 /* NoodleLineNumberView.m */; };
+		15107ABD1807B97B002D2D08 /* BPResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 15107ABC1807B97B002D2D08 /* BPResource.m */; };
+		15107AC01807C009002D2D08 /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 15107ABE1807C009002D2D08 /* tag.png */; };
+		15107AC11807C009002D2D08 /* tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15107ABF1807C009002D2D08 /* tag@2x.png */; };
+		15107AC51807C896002D2D08 /* HomeDefault.md in Resources */ = {isa = PBXBuildFile; fileRef = 15107AC41807C896002D2D08 /* HomeDefault.md */; };
+		15107AC71807CBEE002D2D08 /* alligator.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 15107AC61807CBEE002D2D08 /* alligator.jpg */; };
 		1513144B17EAAE7C003D4637 /* BPSiteGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1513144A17EAAE7C003D4637 /* BPSiteGenerator.m */; };
 		153C91EB17E8079C008E7A2A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C91EA17E8079C008E7A2A /* Cocoa.framework */; };
 		153C91F517E8079C008E7A2A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 153C91F317E8079C008E7A2A /* InfoPlist.strings */; };
@@ -70,6 +77,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15063E491808F72000A67E7D /* reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reload.png; path = Images/reload.png; sourceTree = "<group>"; };
+		15063E4A1808F72000A67E7D /* reload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reload@2x.png"; path = "Images/reload@2x.png"; sourceTree = "<group>"; };
 		15107AB0180791DC002D2D08 /* MarkerLineNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkerLineNumberView.h; sourceTree = "<group>"; };
 		15107AB1180791DC002D2D08 /* MarkerLineNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkerLineNumberView.m; sourceTree = "<group>"; };
 		15107AB2180791DC002D2D08 /* NoodleLineNumberMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoodleLineNumberMarker.h; sourceTree = "<group>"; };
@@ -77,6 +86,12 @@
 		15107AB4180791DC002D2D08 /* NoodleLineNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoodleLineNumberView.h; sourceTree = "<group>"; };
 		15107AB5180791DC002D2D08 /* NoodleLineNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoodleLineNumberView.m; sourceTree = "<group>"; };
 		15107ABA18079405002D2D08 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+		15107ABB1807B97B002D2D08 /* BPResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPResource.h; path = Models/BPResource.h; sourceTree = "<group>"; };
+		15107ABC1807B97B002D2D08 /* BPResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPResource.m; path = Models/BPResource.m; sourceTree = "<group>"; };
+		15107ABE1807C009002D2D08 /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tag.png; path = Images/tag.png; sourceTree = "<group>"; };
+		15107ABF1807C009002D2D08 /* tag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tag@2x.png"; path = "Images/tag@2x.png"; sourceTree = "<group>"; };
+		15107AC41807C896002D2D08 /* HomeDefault.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = HomeDefault.md; path = Assets/HomeDefault.md; sourceTree = "<group>"; };
+		15107AC61807CBEE002D2D08 /* alligator.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = alligator.jpg; path = Assets/alligator.jpg; sourceTree = "<group>"; };
 		1513144917EAAE7C003D4637 /* BPSiteGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPSiteGenerator.h; sourceTree = "<group>"; };
 		1513144A17EAAE7C003D4637 /* BPSiteGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPSiteGenerator.m; sourceTree = "<group>"; };
 		153C91E717E8079C008E7A2A /* HomeBoxer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeBoxer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -300,6 +315,8 @@
 				15F42AC517EABB17001C4B46 /* glyphicons-halflings-regular-ttf.data */,
 				15F42AC617EABB17001C4B46 /* glyphicons-halflings-regular-woff.data */,
 				15F42ABF17EAB773001C4B46 /* template.html */,
+				15107AC61807CBEE002D2D08 /* alligator.jpg */,
+				15107AC41807C896002D2D08 /* HomeDefault.md */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -590,6 +607,8 @@
 			children = (
 				156A269617E8A4E2000189A5 /* BPPage.h */,
 				156A269717E8A4E2000189A5 /* BPPage.m */,
+				15107ABB1807B97B002D2D08 /* BPResource.h */,
+				15107ABC1807B97B002D2D08 /* BPResource.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -605,6 +624,10 @@
 				15B7B0AB1807742300CDDD12 /* pages@2x.png */,
 				15B7B0B2180787BB00CDDD12 /* nothing.png */,
 				15B7B0B3180787BB00CDDD12 /* nothing@2x.png */,
+				15107ABE1807C009002D2D08 /* tag.png */,
+				15107ABF1807C009002D2D08 /* tag@2x.png */,
+				15063E491808F72000A67E7D /* reload.png */,
+				15063E4A1808F72000A67E7D /* reload@2x.png */,
 				15B7B0731806715C00CDDD12 /* Export_1024.icns */,
 			);
 			name = Images;
@@ -713,8 +736,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15107AC51807C896002D2D08 /* HomeDefault.md in Resources */,
+				15107AC71807CBEE002D2D08 /* alligator.jpg in Resources */,
 				15F42AC717EABB17001C4B46 /* bootstrap.min.css in Resources */,
 				15F42ACF17EAC25E001C4B46 /* bootstrap.min.js in Resources */,
+				15063E4B1808F72000A67E7D /* reload.png in Resources */,
 				153D24831805BE3E005D2DCC /* jquery.min.js in Resources */,
 				15B7B0B01807742300CDDD12 /* pages.png in Resources */,
 				15F42AC917EABB17001C4B46 /* glyphicons-halflings-regular-eot.data in Resources */,
@@ -725,6 +751,7 @@
 				15F42ACB17EABB17001C4B46 /* glyphicons-halflings-regular-ttf.data in Resources */,
 				15B7B06E1806570300CDDD12 /* HomeBoxer_1024.icns in Resources */,
 				15B7B0AC1807742300CDDD12 /* box_icon.png in Resources */,
+				15063E4C1808F72000A67E7D /* reload@2x.png in Resources */,
 				15F42ACA17EABB17001C4B46 /* glyphicons-halflings-regular-svg.data in Resources */,
 				15B7B0AF1807742300CDDD12 /* files@2x.png in Resources */,
 				15F42AC017EAB773001C4B46 /* template.html in Resources */,
@@ -732,9 +759,11 @@
 				15F42ACE17EAC256001C4B46 /* BPDocument.xib in Resources */,
 				15B7B0AE1807742300CDDD12 /* files.png in Resources */,
 				15B7B0B11807742300CDDD12 /* pages@2x.png in Resources */,
+				15107AC11807C009002D2D08 /* tag@2x.png in Resources */,
 				15B7B0741806715C00CDDD12 /* Export_1024.icns in Resources */,
 				15F42ACD17EAC252001C4B46 /* MainMenu.xib in Resources */,
 				15B7B0B4180787BB00CDDD12 /* nothing.png in Resources */,
+				15107AC01807C009002D2D08 /* tag.png in Resources */,
 				15B7B0AD1807742300CDDD12 /* box_icon@2x.png in Resources */,
 				15B7B0B5180787BB00CDDD12 /* nothing@2x.png in Resources */,
 				156A269D17E8A600000189A5 /* PageWizard.xib in Resources */,
@@ -762,6 +791,7 @@
 				15107AB7180791DC002D2D08 /* NoodleLineNumberMarker.m in Sources */,
 				1513144B17EAAE7C003D4637 /* BPSiteGenerator.m in Sources */,
 				156A269B17E8A5E2000189A5 /* BPPageWizard.m in Sources */,
+				15107ABD1807B97B002D2D08 /* BPResource.m in Sources */,
 				15107AB8180791DC002D2D08 /* NoodleLineNumberView.m in Sources */,
 				15107AB6180791DC002D2D08 /* MarkerLineNumberView.m in Sources */,
 				156A269817E8A4E2000189A5 /* BPPage.m in Sources */,

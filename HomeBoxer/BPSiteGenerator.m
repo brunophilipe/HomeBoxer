@@ -57,6 +57,8 @@
 	for (NSUInteger i=0; i<pages.count; i++) {
 		BPPage		*page = [pages objectAtIndex:i];
 		NSString	*content;
+		NSString	*path;
+		NSString	*tag;
 
 		auxPath = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.html",(!page.isHome ? page.slug : @"index")]].relativePath;
 		tempContents = [[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"template" ofType:@"html"] encoding:NSUTF8StringEncoding error:&error] mutableCopy];
@@ -79,9 +81,16 @@
 
 		[tempContents replaceOccurrencesOfString:@"{render.contents}" withString:content options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 
+		for (BPPage *page in pages) {
+			path = [NSString stringWithFormat:@"%@.html",(!page.isHome ? page.slug : @"index")];
+			tag = [NSString stringWithFormat:@"{pages.%@}",page.slug];
+
+			[tempContents replaceOccurrencesOfString:tag withString:path options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+		}
+
 		for (BPResource *resource in resources) {
-			NSString *path = [NSString stringWithFormat:@"files/%@",resource.filename];
-			NSString *tag = [NSString stringWithFormat:@"{resource.%ld}",(unsigned long)resource.uid];
+			path = [NSString stringWithFormat:@"files/%@",resource.filename];
+			tag = [NSString stringWithFormat:@"{resource.%ld}",(unsigned long)resource.uid];
 
 			[tempContents replaceOccurrencesOfString:tag withString:path options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 		}
@@ -91,6 +100,7 @@
 		[tempContents replaceOccurrencesOfString:@"{project.author}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_AUTHOR_NAME onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 
 		[tempContents replaceOccurrencesOfString:@"{page.title}" withString:page.title options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+		[tempContents replaceOccurrencesOfString:@"{page.slug}" withString:page.slug options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 		[tempContents replaceOccurrencesOfString:@"{render.menu}" withString:menu options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 		[tempContents replaceOccurrencesOfString:@"{render.builddate}" withString:[formatter stringFromDate:[NSDate date]] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 

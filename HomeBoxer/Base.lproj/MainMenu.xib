@@ -173,6 +173,45 @@
                                     <action selector="selectAll:" target="-1" id="232"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="4qF-C4-gte"/>
+                            <menuItem title="Insert Tag" id="BEU-4o-MZe">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Insert Tag" id="FJT-Pk-97u">
+                                    <items>
+                                        <menuItem title="Website Name" tag="1" id="SYg-7t-oW5">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="action_insertTag:" target="-1" id="Gow-0j-RUW"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Author Name" tag="2" id="HTE-3T-d2e">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="action_insertTag:" target="-1" id="q9v-i2-XgA"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Author Email" tag="3" id="sBT-68-fVU">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="action_insertTag:" target="-1" id="wBI-Kb-P55"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Jwn-cl-GMc"/>
+                                        <menuItem title="Page Title" tag="4" id="Qlc-qm-PUN">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="action_insertTag:" target="-1" id="KW7-i5-rVg"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Page Slug" tag="5" id="Lot-Uf-AZC">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="action_insertTag:" target="-1" id="Bdp-9H-pCK"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="214">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>

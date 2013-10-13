@@ -42,8 +42,7 @@
 		NSURL *aligURL = [[NSBundle mainBundle] URLForResource:@"alligator" withExtension:@"jpg"];
 		[self addResourcesForURLs:@[aligURL]];
 
-		NSTimer *evt = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(checkLastInteractionTimerFired:) userInfo:nil repeats:YES];
-		[evt fire];
+		[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(checkLastInteractionTimerFired:) userInfo:nil repeats:YES];
 
 		lastInteractionTime = 0;
     }
@@ -103,6 +102,11 @@
 	[self.liveEditorContainer setHasHorizontalRuler:NO];
 	[self.liveEditorContainer setHasVerticalRuler:YES];
 	[self.liveEditorContainer setRulersVisible:YES];
+
+	[self.liveEditorContainer setPostsBoundsChangedNotifications:YES];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(liveEditorDidScroll:) name:NSViewBoundsDidChangeNotification object:self.liveEditorContainer.contentView];
+
+	[self.tableView_pages registerForDraggedTypes:@[@"BP_PAGE_TYPE"]];
 }
 
 + (BOOL)autosavesInPlace
@@ -249,10 +253,23 @@
 	[self.tableView_resources reloadData];
 }
 
+- (void)replaceResourceAtIndex:(NSUInteger)index withResourceInURL:(NSURL *)url
+{
+	BPResource *oldResource = [self.project_resources objectAtIndex:index];
+	BPResource *resource;
+
+	resource = [[BPResource alloc] init];
+	[resource setData:[NSData dataWithContentsOfURL:url]];
+	[resource setFilename:[url lastPathComponent]];
+	[resource setUid:oldResource.uid];
+
+	[(NSMutableArray *)self.project_resources replaceObjectAtIndex:index withObject:resource];
+
+	[self.tableView_resources reloadData];
+}
+
 - (void)checkLastInteractionTimerFired:(NSTimer *)timer
 {
-//	[lineNumberView setNeedsDisplay:YES];
-
 	if (lastInteractionTime == 0) {
 		didSave = NO;
 		return;
@@ -267,18 +284,43 @@
 		//Event threshold reached
 		lastInteractionTime = 0;
 
-		[self.livePreview setAnimates:YES];
+		[self.liveActivity startAnimation:nil];
 
 		[(BPPage *)[self.project_pages objectAtIndex:[self.tableView_pages selectedRow]] setContents:[self.liveEditor.string copy]];
 		didSave = YES;
 
-		NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
-			[self.livePreview setAnimates:NO];
-		}];
-		[op performSelector:@selector(start) withObject:nil afterDelay:2];
+		[self.liveActivity performSelector:@selector(stopAnimation:) withObject:nil afterDelay:0.5];
 	} else {
 		didSave = NO;
 	}
+}
+
+- (NSOpenPanel *)buildImportResourcePanelWithMessage:(NSString *)msg
+{
+	NSOpenPanel *panel = [NSOpenPanel openPanel];
+
+	[panel setAllowsOtherFileTypes:YES];
+	[panel setCanChooseDirectories:NO];
+	[panel setAllowsMultipleSelection:YES];
+	[panel setCanSelectHiddenExtension:YES];
+
+	NSTextField *field = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 250, 50)];
+
+	[field setStringValue:msg];
+	[field setBordered:NO];
+	[field setBackgroundColor:[NSColor clearColor]];
+	[field setEditable:NO];
+	[field setAlignment:NSCenterTextAlignment];
+	[field sizeToFit];
+
+	[panel setAccessoryView:field];
+
+	return panel;
+}
+
+- (void)liveEditorDidScroll:(NSNotification *)notification
+{
+	[lineNumberView setNeedsDisplay:YES];
 }
 
 #pragma mark - IBActions
@@ -340,27 +382,21 @@
 }
 
 - (IBAction)action_addResource:(id)sender {
-	NSOpenPanel *panel = [NSOpenPanel openPanel];
-
-	[panel setAllowsOtherFileTypes:YES];
-	[panel setCanChooseDirectories:NO];
-	[panel setAllowsMultipleSelection:YES];
-	[panel setCanSelectHiddenExtension:YES];
-
-	NSTextField *field = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 250, 50)];
-
-	[field setStringValue:@"Select one or more files to import into your project."];
-	[field setBordered:NO];
-	[field setBackgroundColor:[NSColor clearColor]];
-	[field setEditable:NO];
-	[field setAlignment:NSCenterTextAlignment];
-	[field sizeToFit];
-
-	[panel setAccessoryView:field];
+	NSOpenPanel *panel = [self buildImportResourcePanelWithMessage:@"Select one or more files to import into your project."];
 
 	[panel beginSheetModalForWindow:[NSApp mainWindow] completionHandler:^(NSInteger result){
 		if (result) {
 			[self addResourcesForURLs:[panel URLs]];
+		}
+	}];
+}
+
+- (IBAction)action_replaceResource:(id)sender {
+	NSOpenPanel *panel = [self buildImportResourcePanelWithMessage:@"Select one file to replace the currently selected resource file in your project."];
+
+	[panel beginSheetModalForWindow:[NSApp mainWindow] completionHandler:^(NSInteger result){
+		if (result) {
+			[self replaceResourceAtIndex:self.tableView_resources.selectedRow withResourceInURL:[panel URL]];
 		}
 	}];
 }
@@ -374,11 +410,31 @@
 }
 
 - (IBAction)action_copyTemplate:(id)sender {
-	NSUInteger row = [self.tableView_resources selectedRow];
-	BPResource *res = [self.project_resources objectAtIndex:row];
+	NSButton *bt = sender;
+	switch (bt.tag) {
+		case 1:
+		{
+			NSUInteger row = [self.tableView_pages selectedRow];
+			BPPage *page = [self.project_pages objectAtIndex:row];
 
-	[[NSPasteboard generalPasteboard] clearContents];
-	[[NSPasteboard generalPasteboard] writeObjects:@[[NSString stringWithFormat:@"{resource.%lu}",(unsigned long)res.uid]]];
+			[[NSPasteboard generalPasteboard] clearContents];
+			[[NSPasteboard generalPasteboard] writeObjects:@[[NSString stringWithFormat:@"{pages.%@}",page.slug]]];
+		}
+			break;
+
+		case 2:
+		{
+			NSUInteger row = [self.tableView_resources selectedRow];
+			BPResource *res = [self.project_resources objectAtIndex:row];
+
+			[[NSPasteboard generalPasteboard] clearContents];
+			[[NSPasteboard generalPasteboard] writeObjects:@[[NSString stringWithFormat:@"{resource.%lu}",(unsigned long)res.uid]]];
+		}
+			break;
+
+		default:
+			break;
+	}
 }
 
 - (IBAction)action_generateSite:(id)sender {
@@ -406,6 +462,35 @@
 			[BPSiteGenerator generateSiteAtURL:url withMetadata:self.project_metadata pages:self.project_pages andResources:self.project_resources];
 		}
 	}];
+}
+
+- (IBAction)action_insertTag:(id)sender
+{
+	NSMenuItem *item = sender;
+	switch (item.tag) {
+		case 1:
+			[self.liveEditor insertText:@"{project.title}"];
+			break;
+
+		case 2:
+			[self.liveEditor insertText:@"{project.author}"];
+			break;
+
+		case 3:
+			[self.liveEditor insertText:@"{project.email}"];
+			break;
+
+		case 4:
+			[self.liveEditor insertText:@"{page.title}"];
+			break;
+
+		case 5:
+			[self.liveEditor insertText:@"{page.slug}"];
+			break;
+
+		default:
+			break;
+	}
 }
 
 #pragma mark - Table view data source
@@ -476,6 +561,7 @@
 				[self.button_removePage setEnabled:![[self.project_pages objectAtIndex:table.selectedRow] isHome]];
 				[self.button_setHomePage setEnabled:![[self.project_pages objectAtIndex:table.selectedRow] isHome]];
 				[self.button_editPage setEnabled:YES];
+				[self.button_copyPageTemplate setEnabled:YES];
 
 				[self.liveEditor setString:[(BPPage *)[self.project_pages objectAtIndex:table.selectedRow] contents]];
 				break;
@@ -483,33 +569,100 @@
 			case 2:
 			{
 				[self.button_removeResource setEnabled:YES];
-				[self.button_copyTemplate setEnabled:YES];
+				[self.button_copyResourceTemplate setEnabled:YES];
+				[self.button_replaceResource setEnabled:YES];
 
 //				[self.livePreview setImage:<#(NSImage *)#>]
 				break;
 			}
 		}
 	} else {
-		[self.button_removePage setEnabled:NO];
-		[self.button_editPage setEnabled:NO];
+		switch (table.tag) {
+			case 1:
+			{
+				[self.button_removePage setEnabled:NO];
+				[self.button_editPage setEnabled:NO];
+				[self.button_replaceResource setEnabled:NO];
+				[self.button_copyPageTemplate setEnabled:NO];
+				break;
+			}
+
+			case 2:
+			{
+				[self.button_removeResource setEnabled:NO];
+				[self.button_copyResourceTemplate setEnabled:NO];
+				break;
+			}
+
+			default:
+				break;
+		}
 	}
 }
 
-- (BOOL)tableView:(NSTableView *)tableView shouldReorderColumn:(NSInteger)columnIndex toColumn:(NSInteger)newColumnIndex
+
+- (BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)to dropOperation:(NSTableViewDropOperation)dropOperation
 {
-	return columnIndex != 0 && newColumnIndex != 0;
+	NSPasteboard *pboard = [info draggingPasteboard];
+	NSData *rowData = [pboard dataForType:@"BP_PAGE_TYPE"];
+	NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
+	NSUInteger from = [rowIndexes firstIndex];
+
+	if (from == to) {
+		return NO;
+	}
+
+//	[(NSMutableArray *)self.project_pages exchangeObjectAtIndex:from withObjectAtIndex:MIN(to,self.project_pages.count-1)];
+	[self.tableView_pages beginUpdates];
+	id source = [(NSMutableArray *)self.project_pages objectAtIndex:from];
+	[(NSMutableArray *)self.project_pages insertObject:source atIndex:to];
+	[(NSMutableArray *)self.project_pages removeObjectAtIndex:(from > to ? from+1 : from)];
+	[self.tableView_pages endUpdates];
+
+//	[tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:target] byExtendingSelection:NO];
+
+	return YES;
+}
+
+- (NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id < NSDraggingInfo >)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)operation
+{
+	if ([info draggingSource] == self.tableView_pages) {
+        if (operation == NSTableViewDropOn){
+            [tableView setDropRow:row dropOperation:NSTableViewDropAbove];
+        }
+        return NSDragOperationMove;
+    } else {
+        return NSDragOperationNone;
+    }
+}
+
+- (BOOL)tableView:(NSTableView *)aTableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
+{
+	if (aTableView.tag == 1) {
+		NSMutableArray *names = [NSMutableArray array];
+		NSUInteger *rows = malloc(sizeof(NSUInteger)*[rowIndexes count]);
+		NSUInteger count = [rowIndexes getIndexes:rows maxCount:NSUIntegerMax inIndexRange:nil];
+		for (NSUInteger i=0; i<count; i++) {
+			[names addObject:[[self.project_pages objectAtIndex:rows[i]] performSelector:@selector(title)]];
+		}
+		[pboard writeObjects:names];
+		[pboard setData:[NSKeyedArchiver archivedDataWithRootObject:rowIndexes] forType:@"BP_PAGE_TYPE"];
+		return YES;
+	} else {
+		return NO;
+	}
 }
 
 #pragma mark - Split View Delegate
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMax ofSubviewAt:(NSInteger)dividerIndex
 {
-	return splitView.frame.size.width - 250;
+	return splitView.frame.size.width - 490;
 }
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMin ofSubviewAt:(NSInteger)dividerIndex
 {
-	return 250;
+	return 310;
 }
 
 #pragma mark - Text Delegate
