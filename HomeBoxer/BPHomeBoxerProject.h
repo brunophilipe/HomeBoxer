@@ -29,6 +29,8 @@ typedef enum
 #define kBP_METADATA_METADESC		@"BP_METADATA_METADESC"
 #define kBP_METADATA_LAST_UID		@"BP_METADATA_LAST_UID"
 
+#define kBP_METADATA_FAKEPHP		@"BP_METADATA_FAKEPHP"
+
 #define kBP_ADD_CREATED_PAGE		@"BP_ADD_CREATED_PAGE"
 
 @interface BPHomeBoxerProject : NSDocument <NSTableViewDataSource, NSTableViewDelegate, NSOpenSavePanelDelegate, NSSplitViewDelegate, NSTextDelegate>
@@ -53,6 +55,8 @@ typedef enum
 @property (strong) IBOutlet NSButton *button_copyResourceTemplate;
 @property (strong) IBOutlet NSButton *button_replaceResource;
 
+@property (strong) IBOutlet NSButton *check_fakePHPExtension;
+
 @property (strong) IBOutlet NSTableView *tableView_pages;
 @property (strong) IBOutlet NSTableView *tableView_resources;
 
@@ -73,12 +77,12 @@ typedef enum
 - (IBAction)action_addResource:(id)sender;
 - (IBAction)action_replaceResource:(id)sender;
 - (IBAction)action_deleteResource:(id)sender;
-
 - (IBAction)action_copyTemplate:(id)sender;
-
 - (IBAction)action_generateSite:(id)sender;
-
 - (IBAction)action_insertTag:(id)sender;
+
+- (IBAction)action_optionUpdated:(id)sender;
+
 
 - (void)dismissModal;
 

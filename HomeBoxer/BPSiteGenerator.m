@@ -13,16 +13,18 @@
 
 + (void)generateSiteAtURL:(NSURL *)url withMetadata:(NSDictionary *)meta pages:(NSArray *)pages andResources:(NSArray *)resources
 {
-	NSString *auxPath;
-	NSError *error = nil;
+	NSString		*auxPath, *content, *path, *tag;
+	NSError			*error = nil;
 	NSMutableString *tempContents;
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	BPPage			*page;
+	NSString		*extension = (![[meta objectForKey:kBP_METADATA_FAKEPHP] boolValue] ? @"html" : @"php");
 
 	[formatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm '– GMT'ZZZ"];
 
 	//Build menu to be used on all pages
 
-	NSString *menu = [BPSiteGenerator buildMenu:pages];
+	NSString *menu = [BPSiteGenerator buildMenu:pages filesExtension:extension];
 
 	//Create necessary directories
 
@@ -55,12 +57,9 @@
 	//Generate pages
 
 	for (NSUInteger i=0; i<pages.count; i++) {
-		BPPage		*page = [pages objectAtIndex:i];
-		NSString	*content;
-		NSString	*path;
-		NSString	*tag;
+		page = [pages objectAtIndex:i];
 
-		auxPath = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.html",(!page.isHome ? page.slug : @"index")]].relativePath;
+		auxPath = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@",(!page.isHome ? page.slug : @"index"),extension]].relativePath;
 		tempContents = [[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"template" ofType:@"html"] encoding:NSUTF8StringEncoding error:&error] mutableCopy];
 
 		if (error) {
@@ -82,7 +81,7 @@
 		[tempContents replaceOccurrencesOfString:@"{render.contents}" withString:content options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 
 		for (BPPage *page in pages) {
-			path = [NSString stringWithFormat:@"%@.html",(!page.isHome ? page.slug : @"index")];
+			path = [NSString stringWithFormat:@"%@.%@",(!page.isHome ? page.slug : @"index"),extension];
 			tag = [NSString stringWithFormat:@"{pages.%@}",page.slug];
 
 			[tempContents replaceOccurrencesOfString:tag withString:path options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
@@ -218,12 +217,12 @@
 	}
 }
 
-+ (NSString *)buildMenu:(NSArray *)pages
++ (NSString *)buildMenu:(NSArray *)pages filesExtension:(NSString *)extension
 {
 	NSMutableString *str = [[NSMutableString alloc] init];
 
 	for (BPPage *page in pages) {
-		[str appendFormat:@"<li><a href=\"%@.html\">%@</a></li>\n",(!page.isHome ? page.slug : @"index"),page.title];
+		[str appendFormat:@"<li><a href=\"%@.%@\">%@</a></li>\n",(!page.isHome ? page.slug : @"index"),extension,page.title];
 	}
 
 	return [str copy];

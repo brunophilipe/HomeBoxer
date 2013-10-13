@@ -16,6 +16,7 @@
                 <outlet property="button_removeResource" destination="Y3p-4I-veN" id="1GO-Wh-8au"/>
                 <outlet property="button_replaceResource" destination="9hb-YE-z7J" id="f5Q-mH-RPQ"/>
                 <outlet property="button_setHomePage" destination="LZ2-gw-Tad" id="Unj-jy-XEH"/>
+                <outlet property="check_fakePHPExtension" destination="MO0-K5-s6N" id="eEo-EC-tbu"/>
                 <outlet property="info_author" destination="gjE-CI-JAe" id="9zM-W6-B00"/>
                 <outlet property="info_authorEmail" destination="tYy-rC-pte" id="RMq-sh-dNO"/>
                 <outlet property="info_metaDesc" destination="59g-3n-3wB" id="eCd-MR-K7u"/>
@@ -139,6 +140,13 @@
                                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <font key="titleFont" metaFont="system"/>
                                                         </box>
+                                                        <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="Upf-Bt-njY">
+                                                            <rect key="frame" x="10" y="298" width="299" height="5"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <font key="titleFont" metaFont="system"/>
+                                                        </box>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="QR9-0X-UU9">
                                                             <rect key="frame" x="7" y="408" width="96" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -175,6 +183,26 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="AVC-Ia-bCq">
+                                                            <rect key="frame" x="7" y="275" width="96" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Options" id="TOF-6Y-M30">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <button id="MO0-K5-s6N">
+                                                            <rect key="frame" x="106" y="274" width="205" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="check" title="Use fake .php extension" bezelStyle="regularSquare" imagePosition="left" inset="2" id="UXC-1F-qOt">
+                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="action_optionUpdated:" target="-2" id="yX3-TC-NCM"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                 </view>
                                             </tabViewItem>

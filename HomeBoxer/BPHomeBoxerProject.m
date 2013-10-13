@@ -174,6 +174,8 @@
 	[self.info_author setStringValue:[self.project_metadata objectForKey:kBP_METADATA_AUTHOR_NAME]];
 	[self.info_authorEmail setStringValue:[self.project_metadata objectForKey:kBP_METADATA_AUTHOR_EMAIL]];
 	[self.info_metaDesc setStringValue:[self.project_metadata objectForKey:kBP_METADATA_METADESC]];
+
+	[self.check_fakePHPExtension setState:([[self.project_metadata objectForKey:kBP_METADATA_FAKEPHP] boolValue] ? NSOnState : NSOffState)];
 }
 
 - (void)dismissModal
@@ -492,6 +494,10 @@
 		default:
 			break;
 	}
+}
+
+- (IBAction)action_optionUpdated:(id)sender {
+	[(NSMutableDictionary *)self.project_metadata setObject:[NSNumber numberWithBool:self.check_fakePHPExtension.state==NSOnState] forKey:kBP_METADATA_FAKEPHP];
 }
 
 #pragma mark - Table view data source
