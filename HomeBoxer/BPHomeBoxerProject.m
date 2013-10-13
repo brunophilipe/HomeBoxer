@@ -81,10 +81,14 @@
 
 				case 1:
 					[self.livePreview setHidden:YES];
+					if (self.tableView_pages.selectedRow >= 0) {
+						[self.liveEditorContainer setHidden:NO];
+					}
 					break;
 
 				case 2:
 					[self.livePreview setHidden:NO];
+					[self.liveEditorContainer setHidden:YES];
 					break;
 			}
 		}
@@ -590,6 +594,7 @@
 			{
 				[self.button_removePage setEnabled:NO];
 				[self.button_editPage setEnabled:NO];
+				[self.button_setHomePage setEnabled:NO];
 				[self.button_replaceResource setEnabled:NO];
 				[self.button_copyPageTemplate setEnabled:NO];
 				[self.liveEditorContainer setHidden:YES];

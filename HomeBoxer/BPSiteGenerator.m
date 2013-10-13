@@ -20,7 +20,7 @@
 	BPPage			*page;
 	NSString		*extension = (![[meta objectForKey:kBP_METADATA_FAKEPHP] boolValue] ? @"html" : @"php");
 
-	[formatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm '– GMT'ZZZ"];
+	[formatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm '- GMT'ZZZ"];
 
 	//Build menu to be used on all pages
 

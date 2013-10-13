@@ -397,10 +397,10 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                             </tableHeaderView>
                                                         </scrollView>
-                                                        <button verticalHuggingPriority="750" id="Iab-FJ-nAX">
+                                                        <button focusRingType="none" verticalHuggingPriority="750" id="Iab-FJ-nAX">
                                                             <rect key="frame" x="-1" y="-2" width="21" height="23"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hXP-Ol-ehe">
+                                                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="hXP-Ol-ehe">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
@@ -408,10 +408,10 @@
                                                                 <action selector="action_addResource:" target="-2" id="5u3-x8-9Tr"/>
                                                             </connections>
                                                         </button>
-                                                        <button verticalHuggingPriority="750" id="Y3p-4I-veN">
+                                                        <button focusRingType="none" verticalHuggingPriority="750" id="Y3p-4I-veN">
                                                             <rect key="frame" x="19" y="-2" width="21" height="23"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ERQ-1F-wKi">
+                                                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" enabled="NO" state="on" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="ERQ-1F-wKi">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
@@ -419,10 +419,10 @@
                                                                 <action selector="action_deleteResource:" target="-2" id="fnx-4t-viZ"/>
                                                             </connections>
                                                         </button>
-                                                        <button verticalHuggingPriority="750" tag="2" id="8AD-kO-eQa">
+                                                        <button focusRingType="none" verticalHuggingPriority="750" tag="2" id="8AD-kO-eQa">
                                                             <rect key="frame" x="296" y="-2" width="24" height="23"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="tag" imagePosition="overlaps" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gdk-3w-e01">
+                                                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="tag" imagePosition="overlaps" alignment="center" enabled="NO" state="on" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="gdk-3w-e01">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
@@ -430,10 +430,10 @@
                                                                 <action selector="action_copyTemplate:" target="-2" id="NJx-k1-Xwg"/>
                                                             </connections>
                                                         </button>
-                                                        <button verticalHuggingPriority="750" id="9hb-YE-z7J">
+                                                        <button focusRingType="none" verticalHuggingPriority="750" id="9hb-YE-z7J">
                                                             <rect key="frame" x="273" y="-2" width="24" height="23"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="reload" imagePosition="overlaps" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BpK-tz-wXg">
+                                                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="reload" imagePosition="overlaps" alignment="center" enabled="NO" state="on" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="BpK-tz-wXg">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
@@ -441,10 +441,10 @@
                                                                 <action selector="action_replaceResource:" target="-2" id="K7f-VD-qtc"/>
                                                             </connections>
                                                         </button>
-                                                        <button verticalHuggingPriority="750" id="4li-II-Gb6">
+                                                        <button focusRingType="none" verticalHuggingPriority="750" id="4li-II-Gb6">
                                                             <rect key="frame" x="39" y="-2" width="235" height="23"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4I3-sv-17K">
+                                                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="4I3-sv-17K">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
