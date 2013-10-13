@@ -7,8 +7,7 @@
 //
 
 #import "GHMarkdownParser.h"
-#import "markdown.h"
-//#import "/Users/bruno/Workspace/XCode/HomeBoxer/HomeBoxer/Libraries/Discount/markdown.h"
+#import </usr/local/include/markdown.h>
 
 @implementation GHMarkdownParser
 

@@ -67,6 +67,9 @@
 			[alert runModal];
 		}
 
+		[tempContents replaceOccurrencesOfString:@"{project.metadesc}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_METADESC onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+		[tempContents replaceOccurrencesOfString:@"{project.metakeys}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_METAKEYS onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+
 		switch (page.mode) {
 			case BP_PAGE_MODE_HTML:
 			case BP_PAGE_MODE_PLAINTEXT:
@@ -79,6 +82,8 @@
 		}
 
 		[tempContents replaceOccurrencesOfString:@"{render.contents}" withString:content options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+
+		[tempContents replaceOccurrencesOfString:@"{project.footer}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_FOOTERMSG onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 
 		for (BPPage *page in pages) {
 			path = [NSString stringWithFormat:@"%@.%@",(!page.isHome ? page.slug : @"index"),extension];
@@ -147,24 +152,18 @@
 //	printf( "Tidying:\t%s\n", input);
 
 	ok = tidyOptSetBool(tdoc, TidyXhtmlOut, no);  // Convert to XHTML TidyHideEndTags
-	if(ok)
-		ok = tidyOptSetInt(tdoc, TidyIndentContent, TidyAutoState);
-	if(ok)
-		ok = tidyOptSetInt(tdoc, TidyWrapLen, 0);
-	if(ok)
-		ok = tidyOptSetInt(tdoc, TidyIndentSpaces, 4);
-	if (ok)
-		rc = tidySetErrorBuffer(tdoc, &errbuf);      // Capture diagnostics
-	if(rc >= 0)
-		rc = tidyParseString(tdoc, input);           // Parse the input
-	if(rc >= 0)
-		rc = tidyCleanAndRepair(tdoc);               // Tidy it up!
-	if(rc >= 0)
-		rc = tidyRunDiagnostics(tdoc);               // Kvetch
-	if(rc > 1)                                    // If error, force output.
-		rc =(tidyOptSetBool(tdoc, TidyForceOutput, yes) ? rc : -1);
-	if(rc >= 0)
-		rc = tidySaveBuffer(tdoc, &output);          // Pretty Print
+	if (ok) ok = tidyOptSetInt(tdoc, TidyIndentContent, TidyAutoState);
+	if (ok) ok = tidyOptSetInt(tdoc, TidyWrapLen, 0);
+	if (ok)	ok = tidyOptSetInt(tdoc, TidyIndentSpaces, 4);
+	if (ok) ok = tidyOptSetValue(tdoc, TidyCharEncoding, "utf8");
+//	if (ok) ok = tidyOptSetValue(tdoc, TidyInCharEncoding, "uft8");
+//	if (ok) ok = tidyOptSetValue(tdoc, TidyOutCharEncoding, "uft8");
+	if (ok) rc = tidySetErrorBuffer(tdoc, &errbuf);      // Capture diagnostics
+	if (rc >= 0) rc = tidyParseString(tdoc, input);           // Parse the input
+	if (rc >= 0) rc = tidyCleanAndRepair(tdoc);               // Tidy it up!
+	if (rc >= 0) rc = tidyRunDiagnostics(tdoc);               // Kvetch
+	if (rc > 1) rc =(tidyOptSetBool(tdoc, TidyForceOutput, yes) ? rc : -1); // If error, force output.
+	if (rc >= 0) rc = tidySaveBuffer(tdoc, &output);          // Pretty Print
 
 	if(rc >= 0)
 	{
@@ -176,9 +175,9 @@
 	else
 		printf( "A severe error (%d) occurred.\n", rc);
 
-	tidyBufFree( &output);
-	tidyBufFree( &errbuf);
-	tidyRelease( tdoc);
+	tidyBufFree(&output);
+	tidyBufFree(&errbuf);
+	tidyRelease(tdoc);
 
 	return outputStr;
 }
@@ -212,6 +211,8 @@
 		return @"John Appleseed";
 	} else if ([key isEqualToString:kBP_METADATA_AUTHOR_EMAIL]) {
 		return @"john.apple@example.com";
+	} else if ([key isEqualToString:kBP_METADATA_FOOTERMSG]) {
+		return @"Copyright © 2013 - {project.author}";
 	} else {
 		return @"UNDEFINED";
 	}

@@ -30,6 +30,7 @@
 		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_AUTHOR_EMAIL];
 		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_METADESC];
 		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_METAKEYS];
+		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_FOOTERMSG];
 
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addCreatedPage) name:kBP_ADD_CREATED_PAGE object:nil];
 
@@ -164,6 +165,9 @@
 		wrapper = [files objectForKey:@"resources.bin"];
 		self.project_resources = [NSKeyedUnarchiver unarchiveObjectWithData:wrapper.regularFileContents];
 
+//		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_METADESC];
+//		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_FOOTERMSG];
+
 		return YES;
 	}
 	@catch (NSException *exception) {
@@ -177,7 +181,9 @@
 	[self.info_title setStringValue:[self.project_metadata objectForKey:kBP_METADATA_PAGE_TITLE]];
 	[self.info_author setStringValue:[self.project_metadata objectForKey:kBP_METADATA_AUTHOR_NAME]];
 	[self.info_authorEmail setStringValue:[self.project_metadata objectForKey:kBP_METADATA_AUTHOR_EMAIL]];
+	[self.info_metaKeys setStringValue:[self.project_metadata objectForKey:kBP_METADATA_METAKEYS]];
 	[self.info_metaDesc setStringValue:[self.project_metadata objectForKey:kBP_METADATA_METADESC]];
+	[self.info_footerMessage setStringValue:[self.project_metadata objectForKey:kBP_METADATA_FOOTERMSG]];
 
 	[self.check_fakePHPExtension setState:([[self.project_metadata objectForKey:kBP_METADATA_FAKEPHP] boolValue] ? NSOnState : NSOffState)];
 }
@@ -196,6 +202,7 @@
 		createdPage = nil;
 		[self.tableView_pages endUpdates];
 	}];
+	[self updateChangeCount:NSChangeDone];
 	[opr performSelector:@selector(start) withObject:nil afterDelay:0.3];
 }
 
@@ -271,6 +278,7 @@
 	[resource setUid:oldResource.uid];
 
 	[(NSMutableArray *)self.project_resources replaceObjectAtIndex:index withObject:resource];
+	[self updateChangeCount:NSChangeDone];
 
 	[self.tableView_resources reloadData];
 }
@@ -336,6 +344,11 @@
 	[(NSMutableDictionary *)self.project_metadata setObject:self.info_title.stringValue forKey:kBP_METADATA_PAGE_TITLE];
 	[(NSMutableDictionary *)self.project_metadata setObject:self.info_author.stringValue forKey:kBP_METADATA_AUTHOR_NAME];
 	[(NSMutableDictionary *)self.project_metadata setObject:self.info_authorEmail.stringValue forKey:kBP_METADATA_AUTHOR_EMAIL];
+	[(NSMutableDictionary *)self.project_metadata setObject:self.info_metaKeys.stringValue forKey:kBP_METADATA_METAKEYS];
+	[(NSMutableDictionary *)self.project_metadata setObject:self.info_metaDesc.stringValue forKey:kBP_METADATA_METADESC];
+	[(NSMutableDictionary *)self.project_metadata setObject:self.info_footerMessage.stringValue forKey:kBP_METADATA_FOOTERMSG];
+
+	[self updateChangeCount:NSChangeDone];
 }
 
 - (IBAction)action_addPage:(id)sender {
@@ -362,6 +375,7 @@
 		[(NSMutableArray *)self.project_pages removeObjectAtIndex:index];
 		[self.tableView_pages endUpdates];
 	}
+	[self updateChangeCount:NSChangeDone];
 }
 
 - (IBAction)action_editPage:(id)sender {
@@ -374,6 +388,7 @@
 	[NSApp beginSheet:sheet modalForWindow:[NSApp mainWindow] modalDelegate:nil didEndSelector:nil contextInfo:nil];
 	[NSApp runModalForWindow:sheet];
 
+	[self updateChangeCount:NSChangeDone];
     [NSApp endSheet:sheet];
 	[sheet orderOut:self];
 }
@@ -385,6 +400,7 @@
 		}
 		[[self.project_pages objectAtIndex:self.tableView_pages.selectedRow] setHome:YES];
 	}
+	[self updateChangeCount:NSChangeDone];
 	[self.tableView_pages reloadData];
 }
 
@@ -394,6 +410,7 @@
 	[panel beginSheetModalForWindow:[NSApp mainWindow] completionHandler:^(NSInteger result){
 		if (result) {
 			[self addResourcesForURLs:[panel URLs]];
+			[self updateChangeCount:NSChangeDone];
 		}
 	}];
 }
@@ -414,6 +431,7 @@
 		[self.project_resources performSelector:@selector(removeObjectsAtIndexes:) withObject:[self.tableView_resources selectedRowIndexes]];
 		[self.tableView_resources reloadData];
 	}
+	[self updateChangeCount:NSChangeDone];
 }
 
 - (IBAction)action_copyTemplate:(id)sender {
@@ -502,6 +520,8 @@
 
 - (IBAction)action_optionUpdated:(id)sender {
 	[(NSMutableDictionary *)self.project_metadata setObject:[NSNumber numberWithBool:self.check_fakePHPExtension.state==NSOnState] forKey:kBP_METADATA_FAKEPHP];
+
+	[self updateChangeCount:NSChangeDone];
 }
 
 #pragma mark - Table view data source
@@ -526,21 +546,13 @@
 				if (page.isHome) return [NSImage imageNamed:NSImageNameHomeTemplate];
 				else return [[NSImage alloc] initWithSize:NSMakeSize(1, 1)];
 			} else if ([aTableColumn.identifier isEqualToString:@"title"]) {
-				NSString *type;
+				return [NSString stringWithFormat:@"%@",page.title];
+			} else if ([aTableColumn.identifier isEqualToString:@"mode"]) {
 				switch (page.mode) {
-					case BP_PAGE_MODE_HTML:
-						type = @"HTML";
-						break;
-
-					case BP_PAGE_MODE_MARKDOWN:
-						type = @"Markdown";
-						break;
-
-					case BP_PAGE_MODE_PLAINTEXT:
-						type = @"plain text";
-						break;
+					case BP_PAGE_MODE_HTML: return @"HTML";
+					case BP_PAGE_MODE_MARKDOWN: return @"Markdown";
+					case BP_PAGE_MODE_PLAINTEXT: return @"plain text";
 				}
-				return [NSString stringWithFormat:@"%@ – %@",page.title,type];
 			} else if ([aTableColumn.identifier isEqualToString:@"slug"]) {
 				return page.slug;
 			}
@@ -557,6 +569,32 @@
 		}
 
 		default: return nil;
+	}
+}
+
+- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
+{
+	switch (aTableView.tag) {
+		case 1:
+		{
+			BPPage *page = [self.project_pages objectAtIndex:rowIndex];
+			if ([aTableColumn.identifier isEqualToString:@"title"]) {
+				[page setTitle:anObject];
+				[self updateChangeCount:NSChangeDone];
+			}
+		}
+
+		case 2:
+		{
+			BPResource *res = [self.project_resources objectAtIndex:rowIndex];
+			if ([aTableColumn.identifier isEqualToString:@"filename"]) {
+				NSAlert *alert = [NSAlert alertWithMessageText:nil defaultButton:nil alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"Are you sure you want to change the filename of this file? It will be changed from '%@' to '%@'.",res.filename,anObject];
+				if ([alert runModal] == 1) {
+					[res setFilename:anObject];
+					[self updateChangeCount:NSChangeDone];
+				}
+			}
+		}
 	}
 }
 
@@ -582,7 +620,7 @@
 			{
 				[self.button_removeResource setEnabled:YES];
 				[self.button_copyResourceTemplate setEnabled:YES];
-				[self.button_replaceResource setEnabled:YES];
+				[self.button_replaceResource setEnabled:!([table.selectedRowIndexes count] > 1)];
 
 //				[self.livePreview setImage:<#(NSImage *)#>]
 				break;
@@ -664,6 +702,16 @@
 		return YES;
 	} else {
 		return NO;
+	}
+}
+
+- (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
+{
+	switch (aTableView.tag) {
+		case 1: return [aTableColumn.identifier isEqualToString:@"title"];
+		case 2:	return [aTableColumn.identifier isEqualToString:@"filename"];
+
+		default: return NO;
 	}
 }
 

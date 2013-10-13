@@ -34,6 +34,8 @@
 		156A269817E8A4E2000189A5 /* BPPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 156A269717E8A4E2000189A5 /* BPPage.m */; };
 		156A269B17E8A5E2000189A5 /* BPPageWizard.m in Sources */ = {isa = PBXBuildFile; fileRef = 156A269A17E8A5E2000189A5 /* BPPageWizard.m */; };
 		156A269D17E8A600000189A5 /* PageWizard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156A269C17E8A600000189A5 /* PageWizard.xib */; };
+		15AA4241180B1D74005F879F /* libmarkdown.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15AA4240180B1D74005F879F /* libmarkdown.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		15AA4242180B1F70005F879F /* libtidy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15ED2357180A6559008A3255 /* libtidy.a */; };
 		15B7B06E1806570300CDDD12 /* HomeBoxer_1024.icns in Resources */ = {isa = PBXBuildFile; fileRef = 15B7B06D1806570300CDDD12 /* HomeBoxer_1024.icns */; };
 		15B7B0721806597B00CDDD12 /* HomeBoxer_Doc_1024.icns in Resources */ = {isa = PBXBuildFile; fileRef = 15B7B0711806597B00CDDD12 /* HomeBoxer_Doc_1024.icns */; };
 		15B7B0741806715C00CDDD12 /* Export_1024.icns in Resources */ = {isa = PBXBuildFile; fileRef = 15B7B0731806715C00CDDD12 /* Export_1024.icns */; };
@@ -48,8 +50,6 @@
 		15B7B0B4180787BB00CDDD12 /* nothing.png in Resources */ = {isa = PBXBuildFile; fileRef = 15B7B0B2180787BB00CDDD12 /* nothing.png */; };
 		15B7B0B5180787BB00CDDD12 /* nothing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15B7B0B3180787BB00CDDD12 /* nothing@2x.png */; };
 		15ED2353180A5261008A3255 /* Save.icns in Resources */ = {isa = PBXBuildFile; fileRef = 15ED2352180A5261008A3255 /* Save.icns */; };
-		15ED235B180A6559008A3255 /* libtidy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15ED2357180A6559008A3255 /* libtidy.a */; };
-		15ED235D180A7DF8008A3255 /* libmarkdown.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15ED235C180A7DF8008A3255 /* libmarkdown.a */; };
 		15F42AC017EAB773001C4B46 /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 15F42ABF17EAB773001C4B46 /* template.html */; };
 		15F42AC717EABB17001C4B46 /* bootstrap.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 15F42AC117EABB17001C4B46 /* bootstrap.min.css */; };
 		15F42AC917EABB17001C4B46 /* glyphicons-halflings-regular-eot.data in Resources */ = {isa = PBXBuildFile; fileRef = 15F42AC317EABB17001C4B46 /* glyphicons-halflings-regular-eot.data */; };
@@ -113,130 +113,13 @@
 		153D25A31805D539005D2DCC /* GHMarkdownParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMarkdownParser.m; sourceTree = "<group>"; };
 		153D25A41805D539005D2DCC /* NSString+GHMarkdownParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GHMarkdownParser.h"; sourceTree = "<group>"; };
 		153D25A51805D539005D2DCC /* NSString+GHMarkdownParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GHMarkdownParser.m"; sourceTree = "<group>"; };
-		153D25A91805D5C7005D2DCC /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
-		153D25AA1805D5C7005D2DCC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		153D25AB1805D5C7005D2DCC /* amalloc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = amalloc.c; sourceTree = "<group>"; };
-		153D25AC1805D5C7005D2DCC /* amalloc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = amalloc.h; sourceTree = "<group>"; };
-		153D25AD1805D5C7005D2DCC /* basename.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = basename.c; sourceTree = "<group>"; };
-		153D25AE1805D5C7005D2DCC /* blocktags */ = {isa = PBXFileReference; lastKnownFileType = text; path = blocktags; sourceTree = "<group>"; };
-		153D25AF1805D5C7005D2DCC /* config.cmd */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = config.cmd; sourceTree = "<group>"; };
-		153D25B01805D5C7005D2DCC /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		153D25B11805D5C7005D2DCC /* config.log */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.log; sourceTree = "<group>"; };
-		153D25B21805D5C7005D2DCC /* config.mak */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = config.mak; sourceTree = "<group>"; };
-		153D25B31805D5C7005D2DCC /* config.md */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = config.md; sourceTree = "<group>"; };
-		153D25B41805D5C7005D2DCC /* config.sub */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.sub; sourceTree = "<group>"; };
-		153D25B51805D5C7005D2DCC /* configure.inc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.pascal; path = configure.inc; sourceTree = "<group>"; };
-		153D25B61805D5C7005D2DCC /* configure.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = configure.sh; sourceTree = "<group>"; };
-		153D25B71805D5C7005D2DCC /* COPYRIGHT */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYRIGHT; sourceTree = "<group>"; };
-		153D25B81805D5C7005D2DCC /* CREDITS */ = {isa = PBXFileReference; lastKnownFileType = text; path = CREDITS; sourceTree = "<group>"; };
-		153D25B91805D5C7005D2DCC /* Csio.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Csio.c; sourceTree = "<group>"; };
-		153D25BA1805D5C7005D2DCC /* css.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = css.c; sourceTree = "<group>"; };
-		153D25BB1805D5C7005D2DCC /* cstring.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cstring.h; sourceTree = "<group>"; };
-		153D25BC1805D5C7005D2DCC /* Discount.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Discount.xcodeproj; sourceTree = "<group>"; };
-		153D25BF1805D5C7005D2DCC /* docheader.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = docheader.c; sourceTree = "<group>"; };
-		153D25C01805D5C7005D2DCC /* dumptree.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dumptree.c; sourceTree = "<group>"; };
-		153D25C11805D5C7005D2DCC /* emmatch.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = emmatch.c; sourceTree = "<group>"; };
-		153D25C21805D5C7005D2DCC /* flags.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = flags.c; sourceTree = "<group>"; };
-		153D25C31805D5C7005D2DCC /* generate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = generate.c; sourceTree = "<group>"; };
-		153D25C41805D5C7005D2DCC /* html5.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = html5.c; sourceTree = "<group>"; };
-		153D25C51805D5C7005D2DCC /* INSTALL */ = {isa = PBXFileReference; lastKnownFileType = text; path = INSTALL; sourceTree = "<group>"; };
-		153D25C61805D5C7005D2DCC /* librarian.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = librarian.sh; sourceTree = "<group>"; };
-		153D25C71805D5C7005D2DCC /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		153D25C81805D5C7005D2DCC /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		153D25C91805D5C7005D2DCC /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.in; sourceTree = "<group>"; };
-		153D25CA1805D5C7005D2DCC /* makepage.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = makepage.1; sourceTree = "<group>"; };
-		153D25CB1805D5C7005D2DCC /* makepage.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = makepage.c; sourceTree = "<group>"; };
-		153D25CC1805D5C7005D2DCC /* makepage.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = makepage.dSYM; sourceTree = "<group>"; };
-		153D25CD1805D5C7005D2DCC /* markdown.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = markdown.1; sourceTree = "<group>"; };
-		153D25CE1805D5C7005D2DCC /* markdown.3 */ = {isa = PBXFileReference; lastKnownFileType = text; path = markdown.3; sourceTree = "<group>"; };
-		153D25CF1805D5C7005D2DCC /* markdown.7 */ = {isa = PBXFileReference; lastKnownFileType = text; path = markdown.7; sourceTree = "<group>"; };
-		153D25D01805D5C7005D2DCC /* markdown.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = markdown.c; sourceTree = "<group>"; };
-		153D25D11805D5C7005D2DCC /* markdown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = markdown.h; sourceTree = "<group>"; };
-		153D25D21805D5C7005D2DCC /* mkd-callbacks.3 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "mkd-callbacks.3"; sourceTree = "<group>"; };
-		153D25D31805D5C7005D2DCC /* mkd-extensions.7 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "mkd-extensions.7"; sourceTree = "<group>"; };
-		153D25D41805D5C7005D2DCC /* mkd-functions.3 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "mkd-functions.3"; sourceTree = "<group>"; };
-		153D25D51805D5C7005D2DCC /* mkd-line.3 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "mkd-line.3"; sourceTree = "<group>"; };
-		153D25D61805D5C7005D2DCC /* mkd2html.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = mkd2html.1; sourceTree = "<group>"; };
-		153D25D71805D5C7005D2DCC /* mkd2html.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = mkd2html.c; sourceTree = "<group>"; };
-		153D25D81805D5C7005D2DCC /* mkdio.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = mkdio.c; sourceTree = "<group>"; };
-		153D25D91805D5C7005D2DCC /* mkdio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mkdio.h; sourceTree = "<group>"; };
-		153D25DA1805D5C7005D2DCC /* mkdio.h.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = mkdio.h.in; sourceTree = "<group>"; };
-		153D25DB1805D5C7005D2DCC /* mktags */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mktags; sourceTree = "<group>"; };
-		153D25DC1805D5C7005D2DCC /* mktags.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = mktags.c; sourceTree = "<group>"; };
-		153D25DD1805D5C7005D2DCC /* mktags.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = mktags.dSYM; sourceTree = "<group>"; };
-		153D25DE1805D5C7005D2DCC /* pgm_options.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pgm_options.c; sourceTree = "<group>"; };
-		153D25DF1805D5C7005D2DCC /* pgm_options.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pgm_options.h; sourceTree = "<group>"; };
-		153D25E11805D5C7005D2DCC /* markdown.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = markdown.1; sourceTree = "<group>"; };
-		153D25E21805D5C7005D2DCC /* markdown.2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = markdown.2; sourceTree = "<group>"; };
-		153D25E31805D5C7005D2DCC /* markdown.6 */ = {isa = PBXFileReference; lastKnownFileType = text; path = markdown.6; sourceTree = "<group>"; };
-		153D25E41805D5C7005D2DCC /* mkfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = mkfile; sourceTree = "<group>"; };
-		153D25E51805D5C7005D2DCC /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		153D25E61805D5C7005D2DCC /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		153D25E71805D5C7005D2DCC /* resource.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = resource.c; sourceTree = "<group>"; };
-		153D25E81805D5C7005D2DCC /* setup.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = setup.c; sourceTree = "<group>"; };
-		153D25E91805D5C7005D2DCC /* tags.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = tags.c; sourceTree = "<group>"; };
-		153D25EA1805D5C7005D2DCC /* tags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tags.h; sourceTree = "<group>"; };
-		153D25EC1805D5C7005D2DCC /* autolink.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = autolink.t; sourceTree = "<group>"; };
-		153D25ED1805D5C7005D2DCC /* automatic.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = automatic.t; sourceTree = "<group>"; };
-		153D25EE1805D5C7005D2DCC /* backslash.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = backslash.t; sourceTree = "<group>"; };
-		153D25EF1805D5C7005D2DCC /* callbacks.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = callbacks.t; sourceTree = "<group>"; };
-		153D25F01805D5C7005D2DCC /* chrome.text */ = {isa = PBXFileReference; lastKnownFileType = text; path = chrome.text; sourceTree = "<group>"; };
-		153D25F11805D5C7005D2DCC /* code.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = code.t; sourceTree = "<group>"; };
-		153D25F21805D5C7005D2DCC /* compat.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = compat.t; sourceTree = "<group>"; };
-		153D25F31805D5C7005D2DCC /* crash.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = crash.t; sourceTree = "<group>"; };
-		153D25F41805D5C7005D2DCC /* div.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = div.t; sourceTree = "<group>"; };
-		153D25F51805D5C7005D2DCC /* dl.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = dl.t; sourceTree = "<group>"; };
-		153D25F61805D5C7005D2DCC /* embedlinks.text */ = {isa = PBXFileReference; lastKnownFileType = text; path = embedlinks.text; sourceTree = "<group>"; };
-		153D25F71805D5C7005D2DCC /* emphasis.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = emphasis.t; sourceTree = "<group>"; };
-		153D25F81805D5C7005D2DCC /* extrafootnotes.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = extrafootnotes.t; sourceTree = "<group>"; };
-		153D25F91805D5C7005D2DCC /* flow.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = flow.t; sourceTree = "<group>"; };
-		153D25FA1805D5C7005D2DCC /* footnotes.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = footnotes.t; sourceTree = "<group>"; };
-		153D25FB1805D5C7005D2DCC /* functions.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = functions.sh; sourceTree = "<group>"; };
-		153D25FC1805D5C7005D2DCC /* header.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = header.t; sourceTree = "<group>"; };
-		153D25FD1805D5C7005D2DCC /* html.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = html.t; sourceTree = "<group>"; };
-		153D25FE1805D5C7005D2DCC /* html5.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = html5.t; sourceTree = "<group>"; };
-		153D25FF1805D5C7005D2DCC /* links.text */ = {isa = PBXFileReference; lastKnownFileType = text; path = links.text; sourceTree = "<group>"; };
-		153D26001805D5C7005D2DCC /* linkylinky.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = linkylinky.t; sourceTree = "<group>"; };
-		153D26011805D5C7005D2DCC /* linkypix.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = linkypix.t; sourceTree = "<group>"; };
-		153D26021805D5C7005D2DCC /* list.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = list.t; sourceTree = "<group>"; };
-		153D26031805D5C7005D2DCC /* list3deep.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = list3deep.t; sourceTree = "<group>"; };
-		153D26041805D5C7005D2DCC /* misc.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = misc.t; sourceTree = "<group>"; };
-		153D26051805D5C7005D2DCC /* pandoc.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = pandoc.t; sourceTree = "<group>"; };
-		153D26061805D5C7005D2DCC /* para.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = para.t; sourceTree = "<group>"; };
-		153D26071805D5C7005D2DCC /* paranoia.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = paranoia.t; sourceTree = "<group>"; };
-		153D26081805D5C7005D2DCC /* peculiarities.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = peculiarities.t; sourceTree = "<group>"; };
-		153D26091805D5C7005D2DCC /* pseudo.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = pseudo.t; sourceTree = "<group>"; };
-		153D260A1805D5C7005D2DCC /* reddit.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = reddit.t; sourceTree = "<group>"; };
-		153D260B1805D5C7005D2DCC /* reparse.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = reparse.t; sourceTree = "<group>"; };
-		153D260C1805D5C7005D2DCC /* schiraldi.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = schiraldi.t; sourceTree = "<group>"; };
-		153D260D1805D5C7005D2DCC /* smarty.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = smarty.t; sourceTree = "<group>"; };
-		153D260E1805D5C7005D2DCC /* snakepit.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = snakepit.t; sourceTree = "<group>"; };
-		153D260F1805D5C7005D2DCC /* strikethrough.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = strikethrough.t; sourceTree = "<group>"; };
-		153D26101805D5C7005D2DCC /* style.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = style.t; sourceTree = "<group>"; };
-		153D26111805D5C7005D2DCC /* superscript.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = superscript.t; sourceTree = "<group>"; };
-		153D26121805D5C7005D2DCC /* syntax.text */ = {isa = PBXFileReference; lastKnownFileType = text; path = syntax.text; sourceTree = "<group>"; };
-		153D26131805D5C7005D2DCC /* tables.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = tables.t; sourceTree = "<group>"; };
-		153D26141805D5C7005D2DCC /* tabstop.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = tabstop.t; sourceTree = "<group>"; };
-		153D26151805D5C7005D2DCC /* toc.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = toc.t; sourceTree = "<group>"; };
-		153D26161805D5C7005D2DCC /* xml.t */ = {isa = PBXFileReference; lastKnownFileType = text; path = xml.t; sourceTree = "<group>"; };
-		153D26171805D5C7005D2DCC /* theme.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = theme.1; sourceTree = "<group>"; };
-		153D26181805D5C7005D2DCC /* theme.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = theme.c; sourceTree = "<group>"; };
-		153D26191805D5C7005D2DCC /* toc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = toc.c; sourceTree = "<group>"; };
-		153D261B1805D5C7005D2DCC /* checkbits.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = checkbits.sh; sourceTree = "<group>"; };
-		153D261C1805D5C7005D2DCC /* cols.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cols.c; sourceTree = "<group>"; };
-		153D261D1805D5C7005D2DCC /* echo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = echo.c; sourceTree = "<group>"; };
-		153D261E1805D5C7005D2DCC /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
-		153D261F1805D5C7005D2DCC /* version.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = version.c; sourceTree = "<group>"; };
-		153D26201805D5C7005D2DCC /* version.c.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = version.c.in; sourceTree = "<group>"; };
-		153D26211805D5C7005D2DCC /* xml.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = xml.c; sourceTree = "<group>"; };
-		153D26221805D5C7005D2DCC /* xmlpage.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = xmlpage.c; sourceTree = "<group>"; };
-		153D26261805D708005D2DCC /* libmarkdown.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmarkdown.a; path = HomeBoxer/Libraries/Discount/libmarkdown.a; sourceTree = "<group>"; };
 		153D26281805EE62005D2DCC /* homeboxer.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = homeboxer.css; path = Assets/homeboxer.css; sourceTree = "<group>"; };
 		156A269617E8A4E2000189A5 /* BPPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPPage.h; path = Models/BPPage.h; sourceTree = "<group>"; };
 		156A269717E8A4E2000189A5 /* BPPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPPage.m; path = Models/BPPage.m; sourceTree = "<group>"; };
 		156A269917E8A5E2000189A5 /* BPPageWizard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPPageWizard.h; sourceTree = "<group>"; };
 		156A269A17E8A5E2000189A5 /* BPPageWizard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPPageWizard.m; sourceTree = "<group>"; };
 		156A269C17E8A600000189A5 /* PageWizard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageWizard.xib; sourceTree = "<group>"; };
+		15AA4240180B1D74005F879F /* libmarkdown.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmarkdown.a; path = ../../../../../usr/local/Cellar/discount/2.1.6/lib/libmarkdown.a; sourceTree = "<group>"; };
 		15B7B06D1806570300CDDD12 /* HomeBoxer_1024.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = HomeBoxer_1024.icns; sourceTree = "<group>"; };
 		15B7B0711806597B00CDDD12 /* HomeBoxer_Doc_1024.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = HomeBoxer_Doc_1024.icns; sourceTree = "<group>"; };
 		15B7B0731806715C00CDDD12 /* Export_1024.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Export_1024.icns; path = Images/Export_1024.icns; sourceTree = "<group>"; };
@@ -258,7 +141,6 @@
 		15ED2358180A6559008A3255 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
 		15ED2359180A6559008A3255 /* tidy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tidy.h; sourceTree = "<group>"; };
 		15ED235A180A6559008A3255 /* tidyenum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tidyenum.h; sourceTree = "<group>"; };
-		15ED235C180A7DF8008A3255 /* libmarkdown.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmarkdown.a; path = ../../../../../usr/local/Cellar/discount/2.1.6/lib/libmarkdown.a; sourceTree = "<group>"; };
 		15F42ABF17EAB773001C4B46 /* template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = template.html; path = Assets/template.html; sourceTree = "<group>"; };
 		15F42AC117EABB17001C4B46 /* bootstrap.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = bootstrap.min.css; path = Assets/bootstrap.min.css; sourceTree = "<group>"; };
 		15F42AC217EABB17001C4B46 /* bootstrap.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = bootstrap.min.js; path = Assets/bootstrap.min.js; sourceTree = "<group>"; };
@@ -273,9 +155,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15ED235D180A7DF8008A3255 /* libmarkdown.a in Frameworks */,
 				153C91EB17E8079C008E7A2A /* Cocoa.framework in Frameworks */,
-				15ED235B180A6559008A3255 /* libtidy.a in Frameworks */,
+				15AA4241180B1D74005F879F /* libmarkdown.a in Frameworks */,
+				15AA4242180B1F70005F879F /* libtidy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,9 +229,7 @@
 		153C91E917E8079C008E7A2A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				15ED235C180A7DF8008A3255 /* libmarkdown.a */,
-				153D26261805D708005D2DCC /* libmarkdown.a */,
-				153D25A81805D5C7005D2DCC /* Discount */,
+				15AA4240180B1D74005F879F /* libmarkdown.a */,
 				153C91EA17E8079C008E7A2A /* Cocoa.framework */,
 				153C920C17E8079C008E7A2A /* XCTest.framework */,
 				153C91EC17E8079C008E7A2A /* Other Frameworks */,
@@ -440,162 +320,6 @@
 			);
 			name = GHMarkdownParser;
 			path = Libraries/GHMarkdownParser;
-			sourceTree = "<group>";
-		};
-		153D25A81805D5C7005D2DCC /* Discount */ = {
-			isa = PBXGroup;
-			children = (
-				153D25A91805D5C7005D2DCC /* .gitattributes */,
-				153D25AA1805D5C7005D2DCC /* .gitignore */,
-				153D25AB1805D5C7005D2DCC /* amalloc.c */,
-				153D25AC1805D5C7005D2DCC /* amalloc.h */,
-				153D25AD1805D5C7005D2DCC /* basename.c */,
-				153D25AE1805D5C7005D2DCC /* blocktags */,
-				153D25AF1805D5C7005D2DCC /* config.cmd */,
-				153D25B01805D5C7005D2DCC /* config.h */,
-				153D25B11805D5C7005D2DCC /* config.log */,
-				153D25B21805D5C7005D2DCC /* config.mak */,
-				153D25B31805D5C7005D2DCC /* config.md */,
-				153D25B41805D5C7005D2DCC /* config.sub */,
-				153D25B51805D5C7005D2DCC /* configure.inc */,
-				153D25B61805D5C7005D2DCC /* configure.sh */,
-				153D25B71805D5C7005D2DCC /* COPYRIGHT */,
-				153D25B81805D5C7005D2DCC /* CREDITS */,
-				153D25B91805D5C7005D2DCC /* Csio.c */,
-				153D25BA1805D5C7005D2DCC /* css.c */,
-				153D25BB1805D5C7005D2DCC /* cstring.h */,
-				153D25BC1805D5C7005D2DCC /* Discount.xcodeproj */,
-				153D25BF1805D5C7005D2DCC /* docheader.c */,
-				153D25C01805D5C7005D2DCC /* dumptree.c */,
-				153D25C11805D5C7005D2DCC /* emmatch.c */,
-				153D25C21805D5C7005D2DCC /* flags.c */,
-				153D25C31805D5C7005D2DCC /* generate.c */,
-				153D25C41805D5C7005D2DCC /* html5.c */,
-				153D25C51805D5C7005D2DCC /* INSTALL */,
-				153D25C61805D5C7005D2DCC /* librarian.sh */,
-				153D25C71805D5C7005D2DCC /* main.c */,
-				153D25C81805D5C7005D2DCC /* Makefile */,
-				153D25C91805D5C7005D2DCC /* Makefile.in */,
-				153D25CA1805D5C7005D2DCC /* makepage.1 */,
-				153D25CB1805D5C7005D2DCC /* makepage.c */,
-				153D25CC1805D5C7005D2DCC /* makepage.dSYM */,
-				153D25CD1805D5C7005D2DCC /* markdown.1 */,
-				153D25CE1805D5C7005D2DCC /* markdown.3 */,
-				153D25CF1805D5C7005D2DCC /* markdown.7 */,
-				153D25D01805D5C7005D2DCC /* markdown.c */,
-				153D25D11805D5C7005D2DCC /* markdown.h */,
-				153D25D21805D5C7005D2DCC /* mkd-callbacks.3 */,
-				153D25D31805D5C7005D2DCC /* mkd-extensions.7 */,
-				153D25D41805D5C7005D2DCC /* mkd-functions.3 */,
-				153D25D51805D5C7005D2DCC /* mkd-line.3 */,
-				153D25D61805D5C7005D2DCC /* mkd2html.1 */,
-				153D25D71805D5C7005D2DCC /* mkd2html.c */,
-				153D25D81805D5C7005D2DCC /* mkdio.c */,
-				153D25D91805D5C7005D2DCC /* mkdio.h */,
-				153D25DA1805D5C7005D2DCC /* mkdio.h.in */,
-				153D25DB1805D5C7005D2DCC /* mktags */,
-				153D25DC1805D5C7005D2DCC /* mktags.c */,
-				153D25DD1805D5C7005D2DCC /* mktags.dSYM */,
-				153D25DE1805D5C7005D2DCC /* pgm_options.c */,
-				153D25DF1805D5C7005D2DCC /* pgm_options.h */,
-				153D25E01805D5C7005D2DCC /* Plan9 */,
-				153D25E61805D5C7005D2DCC /* README */,
-				153D25E71805D5C7005D2DCC /* resource.c */,
-				153D25E81805D5C7005D2DCC /* setup.c */,
-				153D25E91805D5C7005D2DCC /* tags.c */,
-				153D25EA1805D5C7005D2DCC /* tags.h */,
-				153D25EB1805D5C7005D2DCC /* tests */,
-				153D26171805D5C7005D2DCC /* theme.1 */,
-				153D26181805D5C7005D2DCC /* theme.c */,
-				153D26191805D5C7005D2DCC /* toc.c */,
-				153D261A1805D5C7005D2DCC /* tools */,
-				153D261E1805D5C7005D2DCC /* VERSION */,
-				153D261F1805D5C7005D2DCC /* version.c */,
-				153D26201805D5C7005D2DCC /* version.c.in */,
-				153D26211805D5C7005D2DCC /* xml.c */,
-				153D26221805D5C7005D2DCC /* xmlpage.c */,
-			);
-			name = Discount;
-			path = HomeBoxer/Libraries/Discount;
-			sourceTree = "<group>";
-		};
-		153D25BD1805D5C7005D2DCC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		153D25E01805D5C7005D2DCC /* Plan9 */ = {
-			isa = PBXGroup;
-			children = (
-				153D25E11805D5C7005D2DCC /* markdown.1 */,
-				153D25E21805D5C7005D2DCC /* markdown.2 */,
-				153D25E31805D5C7005D2DCC /* markdown.6 */,
-				153D25E41805D5C7005D2DCC /* mkfile */,
-				153D25E51805D5C7005D2DCC /* README */,
-			);
-			path = Plan9;
-			sourceTree = "<group>";
-		};
-		153D25EB1805D5C7005D2DCC /* tests */ = {
-			isa = PBXGroup;
-			children = (
-				153D25EC1805D5C7005D2DCC /* autolink.t */,
-				153D25ED1805D5C7005D2DCC /* automatic.t */,
-				153D25EE1805D5C7005D2DCC /* backslash.t */,
-				153D25EF1805D5C7005D2DCC /* callbacks.t */,
-				153D25F01805D5C7005D2DCC /* chrome.text */,
-				153D25F11805D5C7005D2DCC /* code.t */,
-				153D25F21805D5C7005D2DCC /* compat.t */,
-				153D25F31805D5C7005D2DCC /* crash.t */,
-				153D25F41805D5C7005D2DCC /* div.t */,
-				153D25F51805D5C7005D2DCC /* dl.t */,
-				153D25F61805D5C7005D2DCC /* embedlinks.text */,
-				153D25F71805D5C7005D2DCC /* emphasis.t */,
-				153D25F81805D5C7005D2DCC /* extrafootnotes.t */,
-				153D25F91805D5C7005D2DCC /* flow.t */,
-				153D25FA1805D5C7005D2DCC /* footnotes.t */,
-				153D25FB1805D5C7005D2DCC /* functions.sh */,
-				153D25FC1805D5C7005D2DCC /* header.t */,
-				153D25FD1805D5C7005D2DCC /* html.t */,
-				153D25FE1805D5C7005D2DCC /* html5.t */,
-				153D25FF1805D5C7005D2DCC /* links.text */,
-				153D26001805D5C7005D2DCC /* linkylinky.t */,
-				153D26011805D5C7005D2DCC /* linkypix.t */,
-				153D26021805D5C7005D2DCC /* list.t */,
-				153D26031805D5C7005D2DCC /* list3deep.t */,
-				153D26041805D5C7005D2DCC /* misc.t */,
-				153D26051805D5C7005D2DCC /* pandoc.t */,
-				153D26061805D5C7005D2DCC /* para.t */,
-				153D26071805D5C7005D2DCC /* paranoia.t */,
-				153D26081805D5C7005D2DCC /* peculiarities.t */,
-				153D26091805D5C7005D2DCC /* pseudo.t */,
-				153D260A1805D5C7005D2DCC /* reddit.t */,
-				153D260B1805D5C7005D2DCC /* reparse.t */,
-				153D260C1805D5C7005D2DCC /* schiraldi.t */,
-				153D260D1805D5C7005D2DCC /* smarty.t */,
-				153D260E1805D5C7005D2DCC /* snakepit.t */,
-				153D260F1805D5C7005D2DCC /* strikethrough.t */,
-				153D26101805D5C7005D2DCC /* style.t */,
-				153D26111805D5C7005D2DCC /* superscript.t */,
-				153D26121805D5C7005D2DCC /* syntax.text */,
-				153D26131805D5C7005D2DCC /* tables.t */,
-				153D26141805D5C7005D2DCC /* tabstop.t */,
-				153D26151805D5C7005D2DCC /* toc.t */,
-				153D26161805D5C7005D2DCC /* xml.t */,
-			);
-			path = tests;
-			sourceTree = "<group>";
-		};
-		153D261A1805D5C7005D2DCC /* tools */ = {
-			isa = PBXGroup;
-			children = (
-				153D261B1805D5C7005D2DCC /* checkbits.sh */,
-				153D261C1805D5C7005D2DCC /* cols.c */,
-				153D261D1805D5C7005D2DCC /* echo.c */,
-			);
-			path = tools;
 			sourceTree = "<group>";
 		};
 		156A269517E8A4CE000189A5 /* Models */ = {
@@ -722,12 +446,6 @@
 			mainGroup = 153C91DE17E8079C008E7A2A;
 			productRefGroup = 153C91E817E8079C008E7A2A /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 153D25BD1805D5C7005D2DCC /* Products */;
-					ProjectRef = 153D25BC1805D5C7005D2DCC /* Discount.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				153C91E617E8079C008E7A2A /* HomeBoxer */,
@@ -946,9 +664,8 @@
 				INFOPLIST_FILE = "HomeBoxer/HomeBoxer-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/bruno/Workspace/XCode/HomeBoxer/HomeBoxer/Libraries/Discount,
-					/Users/bruno/Workspace/XCode/HomeBoxer/HomeBoxer/Libraries/TidyHTML,
 					/usr/local/Cellar/discount/2.1.6/lib,
+					/Users/bruno/Workspace/XCode/HomeBoxer/HomeBoxer/Libraries/TidyHTML,
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -968,9 +685,8 @@
 				INFOPLIST_FILE = "HomeBoxer/HomeBoxer-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/bruno/Workspace/XCode/HomeBoxer/HomeBoxer/Libraries/Discount,
-					/Users/bruno/Workspace/XCode/HomeBoxer/HomeBoxer/Libraries/TidyHTML,
 					/usr/local/Cellar/discount/2.1.6/lib,
+					/Users/bruno/Workspace/XCode/HomeBoxer/HomeBoxer/Libraries/TidyHTML,
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",

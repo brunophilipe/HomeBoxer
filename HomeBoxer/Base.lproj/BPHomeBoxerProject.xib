@@ -19,6 +19,7 @@
                 <outlet property="check_fakePHPExtension" destination="MO0-K5-s6N" id="eEo-EC-tbu"/>
                 <outlet property="info_author" destination="gjE-CI-JAe" id="9zM-W6-B00"/>
                 <outlet property="info_authorEmail" destination="tYy-rC-pte" id="RMq-sh-dNO"/>
+                <outlet property="info_footerMessage" destination="rkW-YS-gLH" id="wA1-Xw-YLH"/>
                 <outlet property="info_metaDesc" destination="59g-3n-3wB" id="eCd-MR-K7u"/>
                 <outlet property="info_metaKeys" destination="QNE-rv-8Er" id="m31-a5-RJt"/>
                 <outlet property="info_title" destination="OOW-vE-Ocv" id="pho-xz-cxC"/>
@@ -141,6 +142,13 @@
                                                             <font key="titleFont" metaFont="system"/>
                                                         </box>
                                                         <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="Upf-Bt-njY">
+                                                            <rect key="frame" x="10" y="237" width="299" height="5"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <font key="titleFont" metaFont="system"/>
+                                                        </box>
+                                                        <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="DgO-Sx-I7J">
                                                             <rect key="frame" x="10" y="298" width="299" height="5"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -151,6 +159,15 @@
                                                             <rect key="frame" x="7" y="408" width="96" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Meta Tags" id="iyZ-aj-OJ2">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="aUa-0Q-f7N">
+                                                            <rect key="frame" x="7" y="257" width="96" height="35"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Footer Message" id="hoR-y4-RBZ">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -173,6 +190,9 @@
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </tokenFieldCell>
+                                                            <connections>
+                                                                <action selector="updatedMetadata:" target="-2" id="2Eh-yU-0au"/>
+                                                            </connections>
                                                         </tokenField>
                                                         <textField verticalHuggingPriority="750" id="59g-3n-3wB">
                                                             <rect key="frame" x="108" y="309" width="187" height="44"/>
@@ -182,9 +202,12 @@
                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
+                                                            <connections>
+                                                                <action selector="updatedMetadata:" target="-2" id="lPE-Sx-sZl"/>
+                                                            </connections>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="AVC-Ia-bCq">
-                                                            <rect key="frame" x="7" y="275" width="96" height="17"/>
+                                                            <rect key="frame" x="7" y="214" width="96" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Options" id="TOF-6Y-M30">
                                                                 <font key="font" metaFont="system"/>
@@ -193,7 +216,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <button id="MO0-K5-s6N">
-                                                            <rect key="frame" x="106" y="274" width="205" height="18"/>
+                                                            <rect key="frame" x="106" y="213" width="205" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <buttonCell key="cell" type="check" title="Use fake .php extension" bezelStyle="regularSquare" imagePosition="left" inset="2" id="UXC-1F-qOt">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -203,6 +226,18 @@
                                                                 <action selector="action_optionUpdated:" target="-2" id="yX3-TC-NCM"/>
                                                             </connections>
                                                         </button>
+                                                        <textField verticalHuggingPriority="750" id="rkW-YS-gLH">
+                                                            <rect key="frame" x="108" y="248" width="187" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Copyright © 2013 - {project.author}" drawsBackground="YES" id="tY8-F4-zHj">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                            <connections>
+                                                                <action selector="updatedMetadata:" target="-2" id="Sh0-DC-2Sq"/>
+                                                            </connections>
+                                                        </textField>
                                                     </subviews>
                                                 </view>
                                             </tabViewItem>
@@ -233,7 +268,7 @@
                                                                                 </tableHeaderCell>
                                                                                 <imageCell key="dataCell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="lri-Wk-sjD"/>
                                                                             </tableColumn>
-                                                                            <tableColumn identifier="title" width="289" minWidth="40" maxWidth="1000" id="snp-Lg-31S">
+                                                                            <tableColumn identifier="title" width="214" minWidth="40" maxWidth="1000" id="snp-Lg-31S">
                                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Page Title">
                                                                                     <font key="font" metaFont="smallSystem"/>
                                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -242,6 +277,19 @@
                                                                                 <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="ylR-e5-Jnk">
                                                                                     <font key="font" metaFont="system"/>
                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                </textFieldCell>
+                                                                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                            </tableColumn>
+                                                                            <tableColumn identifier="mode" width="71" minWidth="10" maxWidth="3.4028234663852886e+38" id="eLg-e8-1Xe">
+                                                                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                                </tableHeaderCell>
+                                                                                <textFieldCell key="dataCell" controlSize="mini" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="LAD-4h-bnO">
+                                                                                    <font key="font" size="13" name="LucidaGrande"/>
+                                                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                 </textFieldCell>
                                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
@@ -256,7 +304,7 @@
                                                                 <color key="backgroundColor" red="0.50741441457988801" green="0.59454395594844001" blue="0.71656605113636362" alpha="1" colorSpace="calibratedRGB"/>
                                                             </clipView>
                                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" id="iUa-l3-yQF">
-                                                                <rect key="frame" x="0.0" y="504" width="319" height="15"/>
+                                                                <rect key="frame" x="0.0" y="518" width="319" height="16"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                             </scroller>
                                                             <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" id="Cdz-en-n9O">

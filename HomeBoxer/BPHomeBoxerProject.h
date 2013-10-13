@@ -27,6 +27,7 @@ typedef enum
 #define kBP_METADATA_AUTHOR_EMAIL	@"BP_METADATA_AUTHOR_EMAIL"
 #define kBP_METADATA_METAKEYS		@"BP_METADATA_METAKEYS"
 #define kBP_METADATA_METADESC		@"BP_METADATA_METADESC"
+#define kBP_METADATA_FOOTERMSG		@"BP_METADATA_FOOTERMSG"
 #define kBP_METADATA_LAST_UID		@"BP_METADATA_LAST_UID"
 
 #define kBP_METADATA_FAKEPHP		@"BP_METADATA_FAKEPHP"
@@ -44,6 +45,7 @@ typedef enum
 @property (strong) IBOutlet NSTextField *info_authorEmail;
 @property (strong) IBOutlet NSTokenField *info_metaKeys;
 @property (strong) IBOutlet NSTextField *info_metaDesc;
+@property (strong) IBOutlet NSTextField *info_footerMessage;
 
 @property (strong) IBOutlet NSButton *button_addPage;
 @property (strong) IBOutlet NSButton *button_removePage;

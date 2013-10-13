@@ -4,7 +4,8 @@
         <meta name="generator" content="HomeBoxer for Mac OS X, visit www.brunophilipe.com/software/homeboxer">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
+        <meta name="description" content="{project.metadesc}">
+		<meta name="keywords" content="{project.metakeys}">
         <meta name="author" content="{project.author}, {project.email}">
         <title>{project.title} - {page.title}</title>
         <!-- Bootstrap core CSS -->
@@ -34,9 +35,14 @@
 				<div class="clearfix"></div>
             </div>
 			<hr>
-			<div class="col-lg-6 col-sm-12">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <p class="text-left footer">
                     Page last generated in {render.builddate} by <a href="http://www.brunophilipe.com/software/homeboxer" target="_blank">HomeBoxer</a> for Mac OS X
+                </p>
+            </div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <p class="text-right footer">
+					{project.footer}
                 </p>
             </div>
         </div><!-- /container -->
