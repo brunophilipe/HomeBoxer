@@ -278,7 +278,7 @@
 	time_t timeNow;
 	time(&timeNow);
 
-	NSLog(@"Verifying!");
+//	NSLog(@"Verifying!");
 
 	if (timeNow+3 > lastInteractionTime) {
 		//Event threshold reached
