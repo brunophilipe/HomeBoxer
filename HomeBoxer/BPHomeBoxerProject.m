@@ -375,14 +375,17 @@
 }
 
 - (IBAction)action_removePage:(id)sender {
-	NSInteger index = [self.tableView_pages selectedRow];
-	if (index >= 0) {
-		[self.tableView_pages beginUpdates];
-		[self.tableView_pages removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:index] withAnimation:NSTableViewAnimationSlideRight];
-		[(NSMutableArray *)self.project_pages removeObjectAtIndex:index];
-		[self.tableView_pages endUpdates];
+	NSAlert *alert = [NSAlert alertWithMessageText:nil defaultButton:@"Yes" alternateButton:@"No" otherButton:nil informativeTextWithFormat:@"Are you sure you want to remove this page? This can't be undone!"];
+	if ([alert runModal] == 1) {
+		NSInteger index = [self.tableView_pages selectedRow];
+		if (index >= 0) {
+			[self.tableView_pages beginUpdates];
+			[self.tableView_pages removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:index] withAnimation:NSTableViewAnimationSlideRight];
+			[(NSMutableArray *)self.project_pages removeObjectAtIndex:index];
+			[self.tableView_pages endUpdates];
+		}
+		[self updateChangeCount:NSChangeDone];
 	}
-	[self updateChangeCount:NSChangeDone];
 }
 
 - (IBAction)action_editPage:(id)sender {

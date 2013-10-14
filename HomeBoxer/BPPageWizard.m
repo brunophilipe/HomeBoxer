@@ -26,6 +26,7 @@
 - (IBAction)action_save:(id)sender {
 	[self.page setSlug:self.label_pageSlug.stringValue];
 	[self.page setTitle:self.label_pageTitle.stringValue];
+	[self.page setHideFromMenu:[self.check_hideFromMenu state]==NSOnState];
 
 	BP_PAGE_MODE mode = BP_PAGE_MODE_MARKDOWN;
 

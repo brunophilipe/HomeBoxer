@@ -667,6 +667,7 @@
 					/usr/local/Cellar/discount/2.1.6/lib,
 					/Users/bruno/Workspace/XCode/HomeBoxer/HomeBoxer/Libraries/TidyHTML,
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-Objc",

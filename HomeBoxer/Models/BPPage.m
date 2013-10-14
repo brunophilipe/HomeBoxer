@@ -35,6 +35,7 @@
 		self.page_id = [(NSNumber *)[aDecoder decodeObjectForKey:@"BPPAGE_ID"] unsignedIntegerValue];
 		self.mode = [aDecoder decodeIntegerForKey:@"BPPAGE_MODE"];
 		self.home = [aDecoder decodeBoolForKey:@"BP_ISHOME"];
+		self.hideFromMenu = [aDecoder decodeBoolForKey:@"BP_HIDEFROMMENU"];
 	}
 
 	return self;
@@ -48,6 +49,7 @@
 	[aCoder encodeObject:[NSNumber numberWithUnsignedInteger:self.page_id] forKey:@"BPPAGE_ID"];
 	[aCoder encodeInteger:self.mode forKey:@"BPPAGE_MODE"];
 	[aCoder encodeBool:self.isHome forKey:@"BP_ISHOME"];
+	[aCoder encodeBool:self.hideFromMenu forKey:@"BP_HIDEFROMMENU"];
 }
 
 @end

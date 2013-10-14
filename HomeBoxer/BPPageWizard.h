@@ -18,6 +18,7 @@
 @property (strong) IBOutlet NSTextField *label_pageTitle;
 @property (strong) IBOutlet NSTextField *label_pageSlug;
 @property (strong) IBOutlet NSPopUpButton *picker_pageMode;
+@property (strong) IBOutlet NSButton *check_hideFromMenu;
 
 @property BOOL isNewPage;
 

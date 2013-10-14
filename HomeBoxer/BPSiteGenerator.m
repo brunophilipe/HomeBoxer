@@ -223,6 +223,7 @@
 	NSMutableString *str = [[NSMutableString alloc] init];
 
 	for (BPPage *page in pages) {
+		if ([page hideFromMenu]) continue;
 		[str appendFormat:@"<li><a href=\"%@.%@\">%@</a></li>\n",(!page.isHome ? page.slug : @"index"),extension,page.title];
 	}
 

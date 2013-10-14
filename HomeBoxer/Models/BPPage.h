@@ -22,6 +22,7 @@ typedef enum
 @property (strong, nonatomic) NSString *contents;
 
 @property (getter = isHome) BOOL home;
+@property BOOL hideFromMenu;
 
 @property NSUInteger page_id;
 @property BP_PAGE_MODE mode;

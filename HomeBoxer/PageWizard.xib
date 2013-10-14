@@ -3,14 +3,15 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1080</int>
 		<string key="IBDocument.SystemVersion">12F45</string>
-		<string key="IBDocument.InterfaceBuilderVersion">4510</string>
+		<string key="IBDocument.InterfaceBuilderVersion">4511</string>
 		<string key="IBDocument.AppKitVersion">1187.40</string>
 		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">4510</string>
+			<string key="NS.object.0">4511</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
+			<string>NSBox</string>
 			<string>NSButton</string>
 			<string>NSButtonCell</string>
 			<string>NSCustomObject</string>
@@ -42,7 +43,7 @@
 			</object>
 			<object class="NSWindowTemplate" id="486798567">
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{196, 240}, {480, 213}}</string>
+				<string key="NSWindowRect">{{196, 240}, {480, 245}}</string>
 				<int key="NSWTFlags">1618478080</int>
 				<string key="NSWindowTitle">Page Wizard</string>
 				<string key="NSWindowClass">BPPageWizard</string>
@@ -56,7 +57,7 @@
 							<reference key="NSNextResponder" ref="150458645"/>
 							<int key="NSvFlags">1804</int>
 							<object class="NSPSMatrix" key="NSFrameMatrix"/>
-							<string key="NSFrame">{{17, 142}, {103, 17}}</string>
+							<string key="NSFrame">{{17, 174}, {103, 17}}</string>
 							<reference key="NSSuperview" ref="150458645"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="145325084"/>
@@ -97,7 +98,7 @@
 							<reference key="NSNextResponder" ref="150458645"/>
 							<int key="NSvFlags">1802</int>
 							<object class="NSPSMatrix" key="NSFrameMatrix"/>
-							<string key="NSFrame">{{125, 107}, {335, 22}}</string>
+							<string key="NSFrame">{{125, 139}, {335, 22}}</string>
 							<reference key="NSSuperview" ref="150458645"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="470192253"/>
@@ -132,7 +133,7 @@
 							<reference key="NSNextResponder" ref="150458645"/>
 							<int key="NSvFlags">1804</int>
 							<object class="NSPSMatrix" key="NSFrameMatrix"/>
-							<string key="NSFrame">{{17, 109}, {103, 17}}</string>
+							<string key="NSFrame">{{17, 141}, {103, 17}}</string>
 							<reference key="NSSuperview" ref="150458645"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="863732040"/>
@@ -153,7 +154,7 @@
 							<reference key="NSNextResponder" ref="150458645"/>
 							<int key="NSvFlags">1802</int>
 							<object class="NSPSMatrix" key="NSFrameMatrix"/>
-							<string key="NSFrame">{{125, 139}, {335, 22}}</string>
+							<string key="NSFrame">{{125, 171}, {335, 22}}</string>
 							<reference key="NSSuperview" ref="150458645"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="483716294"/>
@@ -175,7 +176,7 @@
 							<reference key="NSNextResponder" ref="150458645"/>
 							<int key="NSvFlags">1802</int>
 							<object class="NSPSMatrix" key="NSFrameMatrix"/>
-							<string key="NSFrame">{{124, 90}, {336, 14}}</string>
+							<string key="NSFrame">{{124, 122}, {336, 14}}</string>
 							<reference key="NSSuperview" ref="150458645"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="870429288"/>
@@ -184,7 +185,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="59790105">
 								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">Slug is the name that will be used as the page url.</string>
+								<string key="NSContents">Slug is what will be used as this page's URL and filename.</string>
 								<object class="NSFont" key="NSSupport">
 									<string key="NSName">LucidaGrande</string>
 									<double key="NSSize">11</double>
@@ -203,7 +204,7 @@
 							<reference key="NSNextResponder" ref="150458645"/>
 							<int key="NSvFlags">1804</int>
 							<object class="NSPSMatrix" key="NSFrameMatrix"/>
-							<string key="NSFrame">{{17, 64}, {103, 17}}</string>
+							<string key="NSFrame">{{17, 96}, {103, 17}}</string>
 							<reference key="NSSuperview" ref="150458645"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="128017600"/>
@@ -224,10 +225,10 @@
 							<reference key="NSNextResponder" ref="150458645"/>
 							<int key="NSvFlags">1802</int>
 							<object class="NSPSMatrix" key="NSFrameMatrix"/>
-							<string key="NSFrame">{{123, 58}, {340, 26}}</string>
+							<string key="NSFrame">{{123, 90}, {340, 26}}</string>
 							<reference key="NSSuperview" ref="150458645"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="1010532144"/>
+							<reference key="NSNextKeyView" ref="445527845"/>
 							<int key="NSTag">3</int>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSPopUpButtonCell" key="NSCell" id="1063560843">
@@ -309,7 +310,7 @@
 							<reference key="NSNextResponder" ref="150458645"/>
 							<int key="NSvFlags">1804</int>
 							<object class="NSPSMatrix" key="NSFrameMatrix"/>
-							<string key="NSFrame">{{175, 170}, {132, 23}}</string>
+							<string key="NSFrame">{{175, 202}, {132, 23}}</string>
 							<reference key="NSSuperview" ref="150458645"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="1039672739"/>
@@ -384,9 +385,66 @@
 							</object>
 							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
+						<object class="NSBox" id="445527845">
+							<reference key="NSNextResponder" ref="150458645"/>
+							<int key="NSvFlags">1548</int>
+							<string key="NSFrame">{{12, 78}, {448, 5}}</string>
+							<reference key="NSSuperview" ref="150458645"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="328299440"/>
+							<string key="NSReuseIdentifierKey">_NS:9</string>
+							<string key="NSOffsets">{0, 0}</string>
+							<object class="NSTextFieldCell" key="NSTitleCell">
+								<int key="NSCellFlags">67108864</int>
+								<int key="NSCellFlags2">0</int>
+								<string key="NSContents">Box</string>
+								<reference key="NSSupport" ref="596604171"/>
+								<reference key="NSBackgroundColor" ref="638633726"/>
+								<object class="NSColor" key="NSTextColor">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
+								</object>
+							</object>
+							<int key="NSBorderType">3</int>
+							<int key="NSBoxType">2</int>
+							<int key="NSTitlePosition">0</int>
+							<bool key="NSTransparent">NO</bool>
+						</object>
+						<object class="NSButton" id="328299440">
+							<reference key="NSNextResponder" ref="150458645"/>
+							<int key="NSvFlags">1804</int>
+							<string key="NSFrame">{{123, 56}, {336, 18}}</string>
+							<reference key="NSSuperview" ref="150458645"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="1010532144"/>
+							<string key="NSReuseIdentifierKey">_NS:9</string>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSButtonCell" key="NSCell" id="779347876">
+								<int key="NSCellFlags">67108864</int>
+								<int key="NSCellFlags2">268435456</int>
+								<string key="NSContents">Hide from Menu</string>
+								<reference key="NSSupport" ref="596604171"/>
+								<string key="NSCellIdentifier">_NS:9</string>
+								<reference key="NSControlView" ref="328299440"/>
+								<int key="NSButtonFlags">1211912448</int>
+								<int key="NSButtonFlags2">2</int>
+								<object class="NSCustomResource" key="NSNormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">NSSwitch</string>
+								</object>
+								<object class="NSButtonImageSource" key="NSAlternateImage">
+									<string key="NSImageName">NSSwitch</string>
+								</object>
+								<string key="NSAlternateContents"/>
+								<string key="NSKeyEquivalent"/>
+								<int key="NSPeriodicDelay">200</int>
+								<int key="NSPeriodicInterval">25</int>
+							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+						</object>
 					</array>
 					<object class="NSPSMatrix" key="NSFrameMatrix"/>
-					<string key="NSFrameSize">{480, 213}</string>
+					<string key="NSFrameSize">{480, 245}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="272781051"/>
@@ -439,6 +497,14 @@
 					</object>
 					<string key="id">aEf-JU-Zxc</string>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">check_hideFromMenu</string>
+						<reference key="source" ref="486798567"/>
+						<reference key="destination" ref="328299440"/>
+					</object>
+					<string key="id">Y4n-fl-Eek</string>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -486,6 +552,8 @@
 							<reference ref="470192253"/>
 							<reference ref="128017600"/>
 							<reference ref="870429288"/>
+							<reference ref="445527845"/>
+							<reference ref="328299440"/>
 							<reference ref="197755460"/>
 							<reference ref="1010532144"/>
 						</array>
@@ -649,6 +717,24 @@
 						<reference key="object" ref="626098667"/>
 						<reference key="parent" ref="1039672739"/>
 					</object>
+					<object class="IBObjectRecord">
+						<string key="id">m9g-At-pGE</string>
+						<reference key="object" ref="445527845"/>
+						<reference key="parent" ref="150458645"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">AFv-YV-9Tk</string>
+						<reference key="object" ref="328299440"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="779347876"/>
+						</array>
+						<reference key="parent" ref="150458645"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">vLz-pZ-39X</string>
+						<reference key="object" ref="779347876"/>
+						<reference key="parent" ref="328299440"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -679,6 +765,7 @@
 				<string key="A8f-6J-bIL.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<reference key="A8f-6J-bIL.IBUserGuides" ref="0"/>
 				<boolean value="NO" key="A8f-6J-bIL.showNotes"/>
+				<string key="AFv-YV-9Tk.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="Aup-ha-piK.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<reference key="Aup-ha-piK.IBUserGuides" ref="0"/>
 				<boolean value="NO" key="Aup-ha-piK.showNotes"/>
@@ -714,6 +801,7 @@
 				<boolean value="NO" key="cEs-pW-g0Q.showNotes"/>
 				<string key="eiy-Fn-MCD.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="NO" key="eiy-Fn-MCD.showNotes"/>
+				<string key="m9g-At-pGE.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="n0B-O0-9bf.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<reference key="n0B-O0-9bf.IBUserGuides" ref="0"/>
 				<boolean value="NO" key="n0B-O0-9bf.showNotes"/>
@@ -723,6 +811,7 @@
 				<boolean value="NO" key="q7G-9N-QYR.showNotes"/>
 				<string key="t4u-ko-W9i.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="NO" key="t4u-ko-W9i.showNotes"/>
+				<string key="vLz-pZ-39X.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
@@ -749,11 +838,16 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="check_hideFromMenu">NSButton</string>
 						<string key="label_pageSlug">NSTextField</string>
 						<string key="label_pageTitle">NSTextField</string>
 						<string key="picker_pageMode">NSPopUpButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="check_hideFromMenu">
+							<string key="name">check_hideFromMenu</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="label_pageSlug">
 							<string key="name">label_pageSlug</string>
 							<string key="candidateClassName">NSTextField</string>
@@ -790,6 +884,7 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="NSMenuCheckmark">{11, 11}</string>
 			<string key="NSMenuMixedState">{10, 3}</string>
+			<string key="NSSwitch">{15, 15}</string>
 		</dictionary>
 	</data>
 </archive>
