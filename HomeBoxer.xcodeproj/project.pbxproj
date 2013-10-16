@@ -18,6 +18,8 @@
 		15107AC51807C896002D2D08 /* HomeDefault.md in Resources */ = {isa = PBXBuildFile; fileRef = 15107AC41807C896002D2D08 /* HomeDefault.md */; };
 		15107AC71807CBEE002D2D08 /* alligator.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 15107AC61807CBEE002D2D08 /* alligator.jpg */; };
 		1513144B17EAAE7C003D4637 /* BPSiteGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1513144A17EAAE7C003D4637 /* BPSiteGenerator.m */; };
+		152B33EA180C2D09007DE775 /* AdvancedSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 152B33E9180C2D09007DE775 /* AdvancedSettings.xib */; };
+		152B33ED180C677F007DE775 /* BPAdvancedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 152B33EC180C677F007DE775 /* BPAdvancedSettings.m */; };
 		153C91EB17E8079C008E7A2A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C91EA17E8079C008E7A2A /* Cocoa.framework */; };
 		153C91F517E8079C008E7A2A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 153C91F317E8079C008E7A2A /* InfoPlist.strings */; };
 		153C91F717E8079C008E7A2A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 153C91F617E8079C008E7A2A /* main.m */; };
@@ -89,6 +91,9 @@
 		15107AC61807CBEE002D2D08 /* alligator.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = alligator.jpg; path = Assets/alligator.jpg; sourceTree = "<group>"; };
 		1513144917EAAE7C003D4637 /* BPSiteGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPSiteGenerator.h; sourceTree = "<group>"; };
 		1513144A17EAAE7C003D4637 /* BPSiteGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPSiteGenerator.m; sourceTree = "<group>"; };
+		152B33E9180C2D09007DE775 /* AdvancedSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvancedSettings.xib; sourceTree = "<group>"; };
+		152B33EB180C677F007DE775 /* BPAdvancedSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPAdvancedSettings.h; sourceTree = "<group>"; };
+		152B33EC180C677F007DE775 /* BPAdvancedSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPAdvancedSettings.m; sourceTree = "<group>"; };
 		153C91E717E8079C008E7A2A /* HomeBoxer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeBoxer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		153C91EA17E8079C008E7A2A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		153C91ED17E8079C008E7A2A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -260,8 +265,11 @@
 				156A269A17E8A5E2000189A5 /* BPPageWizard.m */,
 				1513144917EAAE7C003D4637 /* BPSiteGenerator.h */,
 				1513144A17EAAE7C003D4637 /* BPSiteGenerator.m */,
+				152B33EB180C677F007DE775 /* BPAdvancedSettings.h */,
+				152B33EC180C677F007DE775 /* BPAdvancedSettings.m */,
 				153C91FF17E8079C008E7A2A /* BPHomeBoxerProject.xib */,
 				156A269C17E8A600000189A5 /* PageWizard.xib */,
+				152B33E9180C2D09007DE775 /* AdvancedSettings.xib */,
 				153C920217E8079C008E7A2A /* MainMenu.xib */,
 				153C91F117E8079C008E7A2A /* Supporting Files */,
 			);
@@ -464,6 +472,7 @@
 				15F42AC717EABB17001C4B46 /* bootstrap.min.css in Resources */,
 				15F42ACF17EAC25E001C4B46 /* bootstrap.min.js in Resources */,
 				15063E4B1808F72000A67E7D /* reload.png in Resources */,
+				152B33EA180C2D09007DE775 /* AdvancedSettings.xib in Resources */,
 				153D24831805BE3E005D2DCC /* jquery.min.js in Resources */,
 				15B7B0B01807742300CDDD12 /* pages.png in Resources */,
 				15F42AC917EABB17001C4B46 /* glyphicons-halflings-regular-eot.data in Resources */,
@@ -511,6 +520,7 @@
 			files = (
 				153C91FE17E8079C008E7A2A /* BPHomeBoxerProject.m in Sources */,
 				153D25A71805D539005D2DCC /* NSString+GHMarkdownParser.m in Sources */,
+				152B33ED180C677F007DE775 /* BPAdvancedSettings.m in Sources */,
 				15B7B09E18076C8400CDDD12 /* DMTabBar.m in Sources */,
 				15107AB7180791DC002D2D08 /* NoodleLineNumberMarker.m in Sources */,
 				1513144B17EAAE7C003D4637 /* BPSiteGenerator.m in Sources */,

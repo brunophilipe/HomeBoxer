@@ -6,8 +6,16 @@
 //  Copyright (c) 2013 Bruno Philipe. All rights reserved.
 //
 
+#import <stdio.h>
+#import <errno.h>
+
 #import "BPSiteGenerator.h"
 #import "BPHomeBoxerProject.h"
+#import "BPPage.h"
+#import "BPResource.h"
+#import "GHMarkdownParser.h"
+#import "tidy.h"
+#import "buffio.h"
 
 @implementation BPSiteGenerator
 

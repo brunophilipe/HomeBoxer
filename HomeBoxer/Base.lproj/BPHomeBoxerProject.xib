@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4511" systemVersion="12F45" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4511"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="BPHomeBoxerProject">
@@ -99,7 +99,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField verticalHuggingPriority="750" tag="1" id="OOW-vE-Ocv">
-                                                            <rect key="frame" x="108" y="510" width="187" height="24"/>
+                                                            <rect key="frame" x="108" y="510" width="191" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="John's Homepage" drawsBackground="YES" id="V5Y-G0-qB1">
                                                                 <font key="font" size="14" name="LucidaGrande"/>
@@ -107,11 +107,11 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <connections>
-                                                                <action selector="updatedMetadata:" target="-2" id="laV-iw-qyp"/>
+                                                                <action selector="action_updatedMetadata:" target="-2" id="Ly0-QY-8Vg"/>
                                                             </connections>
                                                         </textField>
                                                         <textField verticalHuggingPriority="750" tag="2" id="gjE-CI-JAe">
-                                                            <rect key="frame" x="108" y="476" width="187" height="24"/>
+                                                            <rect key="frame" x="108" y="476" width="191" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="John Appleseed" drawsBackground="YES" id="7R3-pa-IAl">
                                                                 <font key="font" size="14" name="LucidaGrande"/>
@@ -119,11 +119,11 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <connections>
-                                                                <action selector="updatedMetadata:" target="-2" id="3fg-me-ljo"/>
+                                                                <action selector="action_updatedMetadata:" target="-2" id="LRY-FA-8rc"/>
                                                             </connections>
                                                         </textField>
                                                         <textField verticalHuggingPriority="750" tag="3" id="tYy-rC-pte">
-                                                            <rect key="frame" x="108" y="442" width="187" height="24"/>
+                                                            <rect key="frame" x="108" y="442" width="191" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="john.apple@example.com" drawsBackground="YES" id="188-eY-ZFS">
                                                                 <font key="font" size="14" name="LucidaGrande"/>
@@ -131,7 +131,7 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <connections>
-                                                                <action selector="updatedMetadata:" target="-2" id="3d7-Mv-mRH"/>
+                                                                <action selector="action_updatedMetadata:" target="-2" id="SMy-2h-mqF"/>
                                                             </connections>
                                                         </textField>
                                                         <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="ggS-gf-kxV">
@@ -183,7 +183,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <tokenField verticalHuggingPriority="750" id="QNE-rv-8Er">
-                                                            <rect key="frame" x="108" y="361" width="187" height="66"/>
+                                                            <rect key="frame" x="108" y="361" width="191" height="66"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <tokenFieldCell key="cell" selectable="YES" editable="YES" borderStyle="bezel" alignment="left" placeholderString="Insert keys separated by comma" drawsBackground="YES" allowsEditingTextAttributes="YES" tokenStyle="rounded" id="Rrd-m6-cJE">
                                                                 <font key="font" metaFont="system"/>
@@ -191,11 +191,11 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </tokenFieldCell>
                                                             <connections>
-                                                                <action selector="updatedMetadata:" target="-2" id="2Eh-yU-0au"/>
+                                                                <action selector="action_updatedMetadata:" target="-2" id="y3o-f2-LdC"/>
                                                             </connections>
                                                         </tokenField>
                                                         <textField verticalHuggingPriority="750" id="59g-3n-3wB">
-                                                            <rect key="frame" x="108" y="309" width="187" height="44"/>
+                                                            <rect key="frame" x="108" y="309" width="191" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Briefly describe your website." drawsBackground="YES" id="fkg-Cy-GlE">
                                                                 <font key="font" metaFont="system"/>
@@ -203,7 +203,7 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <connections>
-                                                                <action selector="updatedMetadata:" target="-2" id="lPE-Sx-sZl"/>
+                                                                <action selector="action_updatedMetadata:" target="-2" id="Xw4-9M-Fn0"/>
                                                             </connections>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="AVC-Ia-bCq">
@@ -216,7 +216,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <button id="MO0-K5-s6N">
-                                                            <rect key="frame" x="106" y="213" width="205" height="18"/>
+                                                            <rect key="frame" x="106" y="213" width="195" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <buttonCell key="cell" type="check" title="Use fake .php extension" bezelStyle="regularSquare" imagePosition="left" inset="2" id="UXC-1F-qOt">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -227,7 +227,7 @@
                                                             </connections>
                                                         </button>
                                                         <textField verticalHuggingPriority="750" id="rkW-YS-gLH">
-                                                            <rect key="frame" x="108" y="248" width="187" height="44"/>
+                                                            <rect key="frame" x="108" y="248" width="191" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Copyright © 2013 - {project.author}" drawsBackground="YES" id="tY8-F4-zHj">
                                                                 <font key="font" metaFont="system"/>
@@ -235,9 +235,20 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <connections>
-                                                                <action selector="updatedMetadata:" target="-2" id="Sh0-DC-2Sq"/>
+                                                                <action selector="action_updatedMetadata:" target="-2" id="N8E-za-TWe"/>
                                                             </connections>
                                                         </textField>
+                                                        <button verticalHuggingPriority="750" id="2fB-Qg-fDE">
+                                                            <rect key="frame" x="193" y="127" width="112" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="push" title="Advanced..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vcS-sA-Pt8">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="action_advancedSettings:" target="-2" id="qnb-ek-dw9"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                 </view>
                                             </tabViewItem>
@@ -268,7 +279,7 @@
                                                                                 </tableHeaderCell>
                                                                                 <imageCell key="dataCell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="lri-Wk-sjD"/>
                                                                             </tableColumn>
-                                                                            <tableColumn identifier="title" width="214" minWidth="40" maxWidth="1000" id="snp-Lg-31S">
+                                                                            <tableColumn identifier="title" width="193" minWidth="40" maxWidth="5000" id="snp-Lg-31S">
                                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Page Title">
                                                                                     <font key="font" metaFont="smallSystem"/>
                                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -281,7 +292,7 @@
                                                                                 </textFieldCell>
                                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                             </tableColumn>
-                                                                            <tableColumn identifier="mode" width="71" minWidth="10" maxWidth="3.4028234663852886e+38" id="eLg-e8-1Xe">
+                                                                            <tableColumn identifier="mode" width="90" minWidth="10" maxWidth="90" id="eLg-e8-1Xe">
                                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                                     <font key="font" metaFont="smallSystem"/>
                                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
