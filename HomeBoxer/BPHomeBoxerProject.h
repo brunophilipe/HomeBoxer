@@ -7,32 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "BPPageWizard.h"
-#import "BPResource.h"
-#import "BPSiteGenerator.h"
 #import "DMTabBar.h"
-#import "MarkerLineNumberView.h"
 
 @class DMTabBar;
-
-typedef enum
-{
-	BP_METADATA_PAGE_TITLE = 1,
-	BP_METADATA_AUTHOR_NAME,
-	BP_METADATA_AUTHOR_EMAIL
-} BP_METADATA;
-
-#define kBP_METADATA_PAGE_TITLE		@"BP_METADATA_PAGE_TITLE"
-#define kBP_METADATA_AUTHOR_NAME	@"BP_METADATA_AUTHOR_NAME"
-#define kBP_METADATA_AUTHOR_EMAIL	@"BP_METADATA_AUTHOR_EMAIL"
-#define kBP_METADATA_METAKEYS		@"BP_METADATA_METAKEYS"
-#define kBP_METADATA_METADESC		@"BP_METADATA_METADESC"
-#define kBP_METADATA_FOOTERMSG		@"BP_METADATA_FOOTERMSG"
-#define kBP_METADATA_LAST_UID		@"BP_METADATA_LAST_UID"
-
-#define kBP_METADATA_FAKEPHP		@"BP_METADATA_FAKEPHP"
-
-#define kBP_ADD_CREATED_PAGE		@"BP_ADD_CREATED_PAGE"
 
 @interface BPHomeBoxerProject : NSDocument <NSTableViewDataSource, NSTableViewDelegate, NSOpenSavePanelDelegate, NSSplitViewDelegate, NSTextDelegate>
 
@@ -72,7 +49,8 @@ typedef enum
 @property (strong) IBOutlet NSImageView *livePreview;
 @property (strong) IBOutlet NSProgressIndicator *liveActivity;
 
-- (IBAction)updatedMetadata:(id)sender;
+- (IBAction)action_updatedMetadata:(id)sender;
+- (IBAction)action_optionUpdated:(id)sender;
 
 - (IBAction)action_addPage:(id)sender;
 - (IBAction)action_removePage:(id)sender;
@@ -85,8 +63,7 @@ typedef enum
 - (IBAction)action_generateSite:(id)sender;
 - (IBAction)action_insertTag:(id)sender;
 
-- (IBAction)action_optionUpdated:(id)sender;
-
+- (IBAction)action_advancedSettings:(id)sender;
 
 - (void)dismissModal;
 

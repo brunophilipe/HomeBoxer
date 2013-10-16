@@ -7,6 +7,11 @@
 //
 
 #import "BPHomeBoxerProject.h"
+#import "BPPageWizard.h"
+#import "BPResource.h"
+#import "BPSiteGenerator.h"
+#import "MarkerLineNumberView.h"
+#import "BPAdvancedSettings.h"
 
 @implementation BPHomeBoxerProject
 {
@@ -213,7 +218,7 @@
 	[opr performSelector:@selector(start) withObject:nil afterDelay:0.3];
 }
 
-- (BPPageWizard *)loadPageWizard
+- (BPPageWizard *)loadPageWizard __deprecated
 {
 	NSArray		*topLevelObjects;
 	BPPageWizard	*sheet;
@@ -223,6 +228,23 @@
 	for (NSObject *obj in topLevelObjects) {
 		if (obj.class == [BPPageWizard class]) {
 			sheet = (BPPageWizard *)obj;
+			break;
+		}
+	}
+
+	return sheet;
+}
+
+- (id)loadWindowNibNamed:(NSString *)name ofClass:(Class)class
+{
+	NSArray		*topLevelObjects;
+	id			sheet;
+
+	[[NSBundle mainBundle] loadNibNamed:name owner:nil topLevelObjects:&topLevelObjects];
+
+	for (NSObject *obj in topLevelObjects) {
+		if (obj.class == class) {
+			sheet = obj;
 			break;
 		}
 	}
@@ -347,7 +369,7 @@
 
 #pragma mark - IBActions
 
-- (IBAction)updatedMetadata:(id)sender {
+- (IBAction)action_updatedMetadata:(id)sender {
 	[(NSMutableDictionary *)self.project_metadata setObject:self.info_title.stringValue forKey:kBP_METADATA_PAGE_TITLE];
 	[(NSMutableDictionary *)self.project_metadata setObject:self.info_author.stringValue forKey:kBP_METADATA_AUTHOR_NAME];
 	[(NSMutableDictionary *)self.project_metadata setObject:self.info_authorEmail.stringValue forKey:kBP_METADATA_AUTHOR_EMAIL];
@@ -359,7 +381,7 @@
 }
 
 - (IBAction)action_addPage:(id)sender {
-	BPPageWizard *sheet = [self loadPageWizard];
+	BPPageWizard *sheet = [self loadWindowNibNamed:@"PageWizard" ofClass:[BPPageWizard class]];
 
 	createdPage = [[BPPage alloc] init];
 
@@ -389,7 +411,7 @@
 }
 
 - (IBAction)action_editPage:(id)sender {
-	BPPageWizard *sheet = [self loadPageWizard];
+	BPPageWizard *sheet = [self loadWindowNibNamed:@"PageWizard" ofClass:[BPPageWizard class]];
 
 	[sheet setPage:[self.project_pages objectAtIndex:self.tableView_pages.selectedRow]];
 	[sheet setIsNewPage:NO];
@@ -473,7 +495,7 @@
 }
 
 - (IBAction)action_generateSite:(id)sender {
-	[self updatedMetadata:nil];
+	[self action_updatedMetadata:nil];
 
 	NSSavePanel *panel = [NSSavePanel savePanel];
 	NSTextField *field = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 250, 50)];
@@ -532,6 +554,13 @@
 	[(NSMutableDictionary *)self.project_metadata setObject:[NSNumber numberWithBool:self.check_fakePHPExtension.state==NSOnState] forKey:kBP_METADATA_FAKEPHP];
 
 	[self updateChangeCount:NSChangeDone];
+}
+
+- (IBAction)action_advancedSettings:(id)sender {
+	BPAdvancedSettings *sheet = [self loadWindowNibNamed:@"AdvancedSettings" ofClass:[BPAdvancedSettings class]];
+
+	[sheet setProject_meta:(NSMutableDictionary *)self.project_metadata];
+	[sheet setProject_resources:(NSMutableArray *)self.project_resources];
 }
 
 #pragma mark - Table view data source
@@ -632,7 +661,30 @@
 				[self.button_copyResourceTemplate setEnabled:YES];
 				[self.button_replaceResource setEnabled:!([table.selectedRowIndexes count] > 1)];
 
-//				[self.livePreview setImage:<#(NSImage *)#>]
+				BPResource *res = [self.project_resources objectAtIndex:table.selectedRow];
+				NSString *filename = [res filename];
+				NSString *ext = [filename substringFromIndex:[filename rangeOfString:@"."].location+1];
+
+				NSLog(@"%@",ext);
+
+				if (
+					[ext isEqualToString:@"png"] ||
+					[ext isEqualToString:@"jpg"] ||
+					[ext isEqualToString:@"jpeg"] ||
+					[ext isEqualToString:@"gif"] ||
+					[ext isEqualToString:@"tiff"]
+					)
+				{
+					NSImage *img = [[NSImage alloc] initWithData:[res data]];
+					[self.livePreview setImage:img];
+					[self.livePreview setHidden:NO];
+				}
+				else
+				{
+					[self.livePreview setImage:nil];
+					[self.livePreview setHidden:YES];
+				}
+				
 				break;
 			}
 		}
