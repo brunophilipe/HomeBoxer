@@ -13,6 +13,11 @@
 	NSMutableDictionary *_project_meta;
 }
 
+- (BOOL)canBecomeKeyWindow
+{
+	return YES;
+}
+
 #pragma mark - IBActions
 
 - (IBAction)action_controlChanged:(id)sender {
@@ -22,9 +27,12 @@
 }
 
 - (IBAction)action_cancel:(id)sender {
+	[NSApp stopModal];
 }
 
 - (IBAction)action_save:(id)sender {
+
+	[NSApp stopModal];
 }
 
 #pragma mark - Getters and Setters
@@ -33,7 +41,15 @@
 {
 	_project_meta = project_meta;
 
-	[self.label_gaCode setStringValue:[project_meta objectForKey:kBP_METADATA_GACODE]];
+	id aux;
+
+	aux = [project_meta objectForKey:kBP_MD_GACODE];
+	if (!aux) aux = @"";
+	[self.label_gaCode setStringValue:aux];
+
+	aux = [project_meta objectForKey:kBP_MD_TITLEMODE];
+//	if (!aux) aux = [NSNumber numberWithInt:<#(int)#>];
+
 }
 
 - (NSMutableDictionary *)project_meta

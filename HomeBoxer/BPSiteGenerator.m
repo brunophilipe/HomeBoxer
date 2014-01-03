@@ -26,7 +26,7 @@
 	NSMutableString *tempContents;
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	BPPage			*page;
-	NSString		*extension = (![[meta objectForKey:kBP_METADATA_FAKEPHP] boolValue] ? @"html" : @"php");
+	NSString		*extension = (![[meta objectForKey:kBP_MD_FAKEPHP] boolValue] ? @"html" : @"php");
 
 	[formatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm '- GMT'ZZZ"];
 
@@ -75,8 +75,8 @@
 			[alert runModal];
 		}
 
-		[tempContents replaceOccurrencesOfString:@"{project.metadesc}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_METADESC onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
-		[tempContents replaceOccurrencesOfString:@"{project.metakeys}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_METAKEYS onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+		[tempContents replaceOccurrencesOfString:@"{project.metadesc}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_MD_METADESC onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+		[tempContents replaceOccurrencesOfString:@"{project.metakeys}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_MD_METAKEYS onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 
 		switch (page.mode) {
 			case BP_PAGE_MODE_HTML:
@@ -91,7 +91,7 @@
 
 		[tempContents replaceOccurrencesOfString:@"{render.contents}" withString:content options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 
-		[tempContents replaceOccurrencesOfString:@"{project.footer}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_FOOTERMSG onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+		[tempContents replaceOccurrencesOfString:@"{project.footer}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_MD_FOOTERMSG onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 
 		for (BPPage *page in pages) {
 			path = [NSString stringWithFormat:@"%@.%@",(!page.isHome ? page.slug : @"index"),extension];
@@ -107,9 +107,9 @@
 			[tempContents replaceOccurrencesOfString:tag withString:path options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 		}
 
-		[tempContents replaceOccurrencesOfString:@"{project.title}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_PAGE_TITLE onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
-		[tempContents replaceOccurrencesOfString:@"{project.email}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_AUTHOR_EMAIL onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
-		[tempContents replaceOccurrencesOfString:@"{project.author}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_METADATA_AUTHOR_NAME onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+		[tempContents replaceOccurrencesOfString:@"{project.title}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_MD_PAGE_TITLE onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+		[tempContents replaceOccurrencesOfString:@"{project.email}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_MD_AUTHOR_EMAIL onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
+		[tempContents replaceOccurrencesOfString:@"{project.author}" withString:[BPSiteGenerator fieldInputOrDefaultForKey:kBP_MD_AUTHOR_NAME onDictionary:meta] options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 
 		[tempContents replaceOccurrencesOfString:@"{page.title}" withString:page.title options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
 		[tempContents replaceOccurrencesOfString:@"{page.slug}" withString:page.slug options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempContents.length)];
@@ -213,13 +213,13 @@
 		return value;
 	}
 
-	if ([key isEqualToString:kBP_METADATA_PAGE_TITLE]) {
+	if ([key isEqualToString:kBP_MD_PAGE_TITLE]) {
 		return @"John's Homepage";
-	} else if ([key isEqualToString:kBP_METADATA_AUTHOR_NAME]) {
+	} else if ([key isEqualToString:kBP_MD_AUTHOR_NAME]) {
 		return @"John Appleseed";
-	} else if ([key isEqualToString:kBP_METADATA_AUTHOR_EMAIL]) {
+	} else if ([key isEqualToString:kBP_MD_AUTHOR_EMAIL]) {
 		return @"john.apple@example.com";
-	} else if ([key isEqualToString:kBP_METADATA_FOOTERMSG]) {
+	} else if ([key isEqualToString:kBP_MD_FOOTERMSG]) {
 		return @"Copyright © 2013 - {project.author}";
 	} else {
 		return @"UNDEFINED";

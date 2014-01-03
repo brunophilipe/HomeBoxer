@@ -30,12 +30,12 @@
 		[self setProject_pages:[NSMutableArray array]];
 		[self setProject_resources:[NSMutableArray array]];
 
-		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_PAGE_TITLE];
-		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_AUTHOR_NAME];
-		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_AUTHOR_EMAIL];
-		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_METADESC];
-		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_METAKEYS];
-		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_FOOTERMSG];
+		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_MD_PAGE_TITLE];
+		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_MD_AUTHOR_NAME];
+		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_MD_AUTHOR_EMAIL];
+		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_MD_METADESC];
+		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_MD_METAKEYS];
+		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_MD_FOOTERMSG];
 
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addCreatedPage) name:kBP_ADD_CREATED_PAGE object:nil];
 
@@ -69,8 +69,7 @@
 	[super windowControllerDidLoadNib:aController];
 	// Add any code here that needs to be executed once the windowController has loaded the document's window.
 
-	NSArray *items = @[
-					   [DMTabBarItem tabBarItemWithIcon:[NSImage imageNamed:@"box_icon"] tag:0],
+	NSArray *items = @[[DMTabBarItem tabBarItemWithIcon:[NSImage imageNamed:@"box_icon"] tag:0],
 					   [DMTabBarItem tabBarItemWithIcon:[NSImage imageNamed:@"pages"] tag:1],
 					   [DMTabBarItem tabBarItemWithIcon:[NSImage imageNamed:@"files"] tag:2]];
 	
@@ -103,6 +102,8 @@
 	[self updateContentFromMemory];
 
 	[self.liveEditor setFont:[NSFont userFixedPitchFontOfSize:11]];
+	[self.liveEditor setAutomaticDashSubstitutionEnabled:NO];
+	[self.liveEditor setAutomaticQuoteSubstitutionEnabled:NO];
 
 	lineNumberView = [[MarkerLineNumberView alloc] initWithScrollView:self.liveEditorContainer];
 
@@ -170,8 +171,8 @@
 		wrapper = [files objectForKey:@"resources.bin"];
 		self.project_resources = [NSKeyedUnarchiver unarchiveObjectWithData:wrapper.regularFileContents];
 
-//		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_METADESC];
-//		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_METADATA_FOOTERMSG];
+//		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_MD_METADESC];
+//		[(NSMutableDictionary *)self.project_metadata setObject:@"" forKey:kBP_MD_FOOTERMSG];
 
 		return YES;
 	}
@@ -190,14 +191,14 @@
 
 - (void)updateContentFromMemory
 {
-	[self.info_title setStringValue:[self.project_metadata objectForKey:kBP_METADATA_PAGE_TITLE]];
-	[self.info_author setStringValue:[self.project_metadata objectForKey:kBP_METADATA_AUTHOR_NAME]];
-	[self.info_authorEmail setStringValue:[self.project_metadata objectForKey:kBP_METADATA_AUTHOR_EMAIL]];
-	[self.info_metaKeys setStringValue:[self.project_metadata objectForKey:kBP_METADATA_METAKEYS]];
-	[self.info_metaDesc setStringValue:[self.project_metadata objectForKey:kBP_METADATA_METADESC]];
-	[self.info_footerMessage setStringValue:[self.project_metadata objectForKey:kBP_METADATA_FOOTERMSG]];
+	[self.info_title setStringValue:[self.project_metadata objectForKey:kBP_MD_PAGE_TITLE]];
+	[self.info_author setStringValue:[self.project_metadata objectForKey:kBP_MD_AUTHOR_NAME]];
+	[self.info_authorEmail setStringValue:[self.project_metadata objectForKey:kBP_MD_AUTHOR_EMAIL]];
+	[self.info_metaKeys setStringValue:[self.project_metadata objectForKey:kBP_MD_METAKEYS]];
+	[self.info_metaDesc setStringValue:[self.project_metadata objectForKey:kBP_MD_METADESC]];
+	[self.info_footerMessage setStringValue:[self.project_metadata objectForKey:kBP_MD_FOOTERMSG]];
 
-	[self.check_fakePHPExtension setState:([[self.project_metadata objectForKey:kBP_METADATA_FAKEPHP] boolValue] ? NSOnState : NSOffState)];
+	[self.check_fakePHPExtension setState:([[self.project_metadata objectForKey:kBP_MD_FAKEPHP] boolValue] ? NSOnState : NSOffState)];
 }
 
 - (void)dismissModal
@@ -257,11 +258,11 @@
 	NSString *value = [self.project_metadata objectForKey:key];
 
 	if (!value || ([value isEqualToString:@""])) {
-		if ([key isEqualToString:kBP_METADATA_PAGE_TITLE]) {
+		if ([key isEqualToString:kBP_MD_PAGE_TITLE]) {
 			return @"John's Website";
-		} else if ([key isEqualToString:kBP_METADATA_AUTHOR_NAME]) {
+		} else if ([key isEqualToString:kBP_MD_AUTHOR_NAME]) {
 			return @"John Appleseed";
-		} else if ([key isEqualToString:kBP_METADATA_AUTHOR_EMAIL]) {
+		} else if ([key isEqualToString:kBP_MD_AUTHOR_EMAIL]) {
 			return @"john.apple@example.com";
 		}
 	}
@@ -273,7 +274,7 @@
 {
 	BPResource *resource;
 
-	NSNumber *lastUID = [self.project_metadata objectForKey:kBP_METADATA_LAST_UID];
+	NSNumber *lastUID = [self.project_metadata objectForKey:kBP_MD_LAST_UID];
 	NSUInteger lUID;
 
 	if (!lastUID) {
@@ -291,7 +292,7 @@
 		[self.project_resources performSelector:@selector(addObject:) withObject:resource];
 	}
 
-	[(NSMutableDictionary *)self.project_metadata setObject:[NSNumber numberWithUnsignedInteger:lUID] forKey:kBP_METADATA_LAST_UID];
+	[(NSMutableDictionary *)self.project_metadata setObject:[NSNumber numberWithUnsignedInteger:lUID] forKey:kBP_MD_LAST_UID];
 
 	[self.tableView_resources reloadData];
 }
@@ -370,12 +371,12 @@
 #pragma mark - IBActions
 
 - (IBAction)action_updatedMetadata:(id)sender {
-	[(NSMutableDictionary *)self.project_metadata setObject:self.info_title.stringValue forKey:kBP_METADATA_PAGE_TITLE];
-	[(NSMutableDictionary *)self.project_metadata setObject:self.info_author.stringValue forKey:kBP_METADATA_AUTHOR_NAME];
-	[(NSMutableDictionary *)self.project_metadata setObject:self.info_authorEmail.stringValue forKey:kBP_METADATA_AUTHOR_EMAIL];
-	[(NSMutableDictionary *)self.project_metadata setObject:self.info_metaKeys.stringValue forKey:kBP_METADATA_METAKEYS];
-	[(NSMutableDictionary *)self.project_metadata setObject:self.info_metaDesc.stringValue forKey:kBP_METADATA_METADESC];
-	[(NSMutableDictionary *)self.project_metadata setObject:self.info_footerMessage.stringValue forKey:kBP_METADATA_FOOTERMSG];
+	[(NSMutableDictionary *)self.project_metadata setObject:self.info_title.stringValue forKey:kBP_MD_PAGE_TITLE];
+	[(NSMutableDictionary *)self.project_metadata setObject:self.info_author.stringValue forKey:kBP_MD_AUTHOR_NAME];
+	[(NSMutableDictionary *)self.project_metadata setObject:self.info_authorEmail.stringValue forKey:kBP_MD_AUTHOR_EMAIL];
+	[(NSMutableDictionary *)self.project_metadata setObject:self.info_metaKeys.stringValue forKey:kBP_MD_METAKEYS];
+	[(NSMutableDictionary *)self.project_metadata setObject:self.info_metaDesc.stringValue forKey:kBP_MD_METADESC];
+	[(NSMutableDictionary *)self.project_metadata setObject:self.info_footerMessage.stringValue forKey:kBP_MD_FOOTERMSG];
 
 	[self updateChangeCount:NSChangeDone];
 }
@@ -509,7 +510,7 @@
 
 	[panel setTitle:@"Exporting Website"];
 	[panel setAccessoryView:field];
-	[panel setNameFieldStringValue:[self metadataValueOrDefaultForKey:kBP_METADATA_PAGE_TITLE]];
+	[panel setNameFieldStringValue:[self metadataValueOrDefaultForKey:kBP_MD_PAGE_TITLE]];
 	[panel setAllowedFileTypes:@[@"public.folder"]];
 
 	[panel beginSheetModalForWindow:[NSApp mainWindow] completionHandler:^(NSInteger result){
@@ -551,7 +552,7 @@
 }
 
 - (IBAction)action_optionUpdated:(id)sender {
-	[(NSMutableDictionary *)self.project_metadata setObject:[NSNumber numberWithBool:self.check_fakePHPExtension.state==NSOnState] forKey:kBP_METADATA_FAKEPHP];
+	[(NSMutableDictionary *)self.project_metadata setObject:[NSNumber numberWithBool:self.check_fakePHPExtension.state==NSOnState] forKey:kBP_MD_FAKEPHP];
 
 	[self updateChangeCount:NSChangeDone];
 }
@@ -561,6 +562,13 @@
 
 	[sheet setProject_meta:(NSMutableDictionary *)self.project_metadata];
 	[sheet setProject_resources:(NSMutableArray *)self.project_resources];
+
+	[NSApp beginSheet:sheet modalForWindow:[NSApp mainWindow] modalDelegate:nil didEndSelector:nil contextInfo:nil];
+	[NSApp runModalForWindow:sheet];
+
+	[self updateChangeCount:NSChangeDone];
+    [NSApp endSheet:sheet];
+	[sheet orderOut:self];
 }
 
 #pragma mark - Table view data source
